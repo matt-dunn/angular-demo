@@ -1,4 +1,4 @@
-<div class="form-group" ng-class="{'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false, 'initializing': !isReady }">
+<div class="form-group" ng-class="{'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false, 'initializing': !isReady, 'is-required': form.required }">
     <label class="control-label" ng-show="showTitle()">{{form.title}}</label>
     <div ng-cloak ng-hide="isReady" class="highlight">
         <i class="fa fa-circle-o-notch fa-spin"></i> Initialising&#x2026;

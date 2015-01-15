@@ -1,3 +1,20 @@
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
     cursor: default;
 }
+
+.form-group {
+    &.is-required {
+        .checkbox-label,
+        .control-label {
+            &:after {
+                font: normal normal normal 14px/1 FontAwesome; // shortening font declaration
+                content: $fa-var-asterisk;
+                text-rendering: auto; // optimizelegibility throws things off #1094
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                margin-left: 5px;
+                color: $brand-info;
+            }
+        }
+    }
+}

@@ -119,7 +119,8 @@ define([
                                                 ],
                                                 "validationMessage": {
                                                     "default": "You must select an item from the list"
-                                                }
+                                                },
+                                                "required": false
                                             },
                                             {
                                                 "key": "tests[]typeaheadTestAsync",
@@ -132,7 +133,8 @@ define([
                                                 },
                                                 "validationMessage": {
                                                     "default": "Please select a location from the list"
-                                                }
+                                                },
+                                                "required": false
                                             },
                                             {
                                                 "key": "tests[]richTextTest1",
@@ -151,7 +153,8 @@ define([
                                                             "items": [ "Subscript", "Superscript" ]
                                                         }
                                                     ]
-                                                }
+                                                },
+                                                "required": false
                                             },
                                             {
                                                 "key": "tests[]richTextTest2",
@@ -166,7 +169,8 @@ define([
                                                             "items": [ "Bold", "Italic", "Strike", "Underline" ]
                                                         }
                                                     ]
-                                                }
+                                                },
+                                                "required": false
                                             },
                                             {
                                                 "key": "tests[]inputTest",
@@ -183,14 +187,19 @@ define([
                                                 },
                                                 "required": true
                                             },
-                                            "tests[]checkboxTest",
+                                            {
+                                                key: "tests[]checkboxTest",
+                                                "required": false
+                                            },
                                             {
                                                 "key": "tests[]selectTest",
-                                                "type": "select"
+                                                "type": "select",
+                                                "required": false
                                             },
                                             {
                                                 "key": "tests[]textAreaTest",
-                                                "type": "textarea"
+                                                "type": "textarea",
+                                                "required": false
                                             }
                                         ]
                                     }
