@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Dynamic Component Demo</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/font-awesome/stylesheets/font-awesome.css">
+
+    <script>
+        // @TODO: find a better place for this...?
+        // Set ckeditor base path _before_ loading ckeditor. This is required when using the optimised version
+        // of the js as the default is to look in the same directory as the served file (root)
+        window.CKEDITOR_BASEPATH = "/app/lib/ckeditor/";
+    </script>
+
+    <!-- Development script: -->
+    <script data-main="main.js" src="lib/requirejs/require.js"></script>
+
+    <!-- Production (optimised) script: -->
+    <!--<script src="app-full.min.js"></script>-->
+</head>
+<body class="requires-js">
+
+<script type="text/javascript">
+    document.body.className += " has-js";
+</script>
+
+<div class="view-container">
+    <div ng-view class="view-frame"></div>
+</div>
+
+</body>
+</html>

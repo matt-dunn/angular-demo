@@ -1,0 +1,25 @@
+section.components-main {
+    .container-fluid, .container {
+        > .row.main {
+            margin-top: $grid-gutter-width;
+        }
+    }
+
+    &.editMode {
+        .editable {
+            z-index: 200;
+            position: relative;
+            display: block;
+        }
+    }
+
+    .modal-backdrop {
+        z-index: -1;
+    }
+
+    &.editMode {
+        .modal-backdrop {
+            z-index: 100;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+<section ng-controller="Lib.Com.Rpi.Angular.Widgets.InstalledController" class="widgets-installed" ng-class="{editmode:isEditMode}">
+    <div as-sortable="dragControlListeners" ng-model="widgetData.widgets" class="sortable">
+        <section class="widget-installed panel panel-default" ng-repeat="widget in widgetData.widgets" as-sortable-item="widget" ng-class="{editmode:isEditMode}">
+            <header ng-show="isEditMode" class="drag-handle panel-heading" as-sortable-item-handle>
+                <span class="options">
+                    <a href="" ng-if="widget.settings !== undefined" ng-click="displaySettings(widget)" class="fa fa-gear fa-lg"></a>
+                    <a href="" ng-if="widget.canRemove !== false" ng-click="remove(widget.type, widget)" class="fa fa-close fa-lg"></a>
+                </span>
+                <h1 class="drag-handle panel-title">
+                    {{widget.title}}
+                </h1>
+            </header>
+            <widget type="{{widget.type}}" class="panel-body"></widget>
+        </section>
+    </div>
+</section>

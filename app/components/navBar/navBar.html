@@ -1,0 +1,26 @@
+<nav ng-controller="Components.NavBarController" class="navbar navbar-default navbar-static-top navbar-main" role="navigation" rpi-navbar>
+    <div class="container-fluid">
+        <div class="navbar-header" data-match-route="/about">
+            <a href="#/about">
+                <i class="navbar-brand fa fa-star fa-2x"></i>
+            </a>
+        </div>
+        <div class="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li data-match-route="/main"><a href="#/main">Dynamic Controller Demo</a></li>
+                <li><a href="https://github.com/matt-dunn/angular-demo" target="_blank"><i class="fa fa-github"></i> GitHub</a></li>
+                <li><a href="http://www.red-pixel.co.uk" target="_blank">RPi</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li data-match-route-display="/main" dropdown class="dropdown options" ng-show="!isEditMode">
+                    <a href="" class="dropdown-toggle" dropdown-toggle role="button" aria-expanded="false">Options <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="" ng-click="setEditMode()">Edit Components</a></li>
+                        <!--<li class="divider"></li>-->
+                        <!--<li><a href="#/main/4">Separated link</a></li>-->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

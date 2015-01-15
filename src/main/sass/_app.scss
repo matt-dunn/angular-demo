@@ -1,0 +1,33 @@
+// Main application level styles
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak],
+.ng-cloak, .x-ng-cloak,
+.ng-hide:not(.ng-hide-animate) {
+    display: none !important;
+}
+
+body.requires-js {
+    &.has-js {
+        &:before {
+            display: none;
+        }
+    }
+
+    &:before {
+        padding: 10px;
+        margin: 10px;
+        border: 2px solid #ff0000;
+        background-color: lighten(#ff0000, 40%);
+        border-radius: 4px;
+        position: relative;
+        top: 20px;
+
+        content: "Please enable JavaScript"
+    }
+
+    .secondary {
+        color: $gray-light;
+        font-size: 85%;
+    }
+}
+

@@ -1,0 +1,14 @@
+<form name="settings" ng-submit="onSubmit(settings)">
+    <div class="modal-header">
+        <button class="close" ng-click="cancel()" type="button">×</button>
+        <h3 class="modal-title">{{widget.title}} Settings</h3>
+    </div>
+    <div class="modal-body">
+        <div sf-schema="schema" sf-form="form" sf-model="model"></div>
+    </div>
+    <div class="modal-footer">
+        <!-- @TODO: implement cancel... -->
+        <button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-primary" type="submit" ng-click="ok()">Save</button>
+    </div>
+</form>

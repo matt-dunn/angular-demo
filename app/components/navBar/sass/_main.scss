@@ -1,0 +1,14 @@
+nav.navbar-main.navbar {
+    > .container-fluid .navbar-brand,
+    > .container .navbar-brand {
+        margin: -2px 0 0 -8px;
+
+        &:hover {
+            color: $navbar-default-brand-color;
+        }
+    }
+
+    .navbar-nav.navbar-right:last-child {
+        margin-right: 0;
+    }
+}

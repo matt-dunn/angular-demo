@@ -1,0 +1,24 @@
+<section ng-controller="Components.MainController" class="components-main" ng-class="{editMode: isEditMode}">
+    <div class="modal-backdrop fade" ng-class="{in: isEditMode}"></div>
+    <widget type="Components.NavBar"></widget>
+    <div class="container-fluid">
+        <widget type="Lib.Com.Rpi.Angular.Widgets.Available" class="editable"></widget>
+        <div class="row main">
+            <div class="col-md-2">
+                <widgets section="left" class="editable"></widgets>
+            </div>
+
+            <div class="col-md-8">
+                <widgets section="middle" class="editable"></widgets>
+
+                <widget type="Components.Demo.EditorDemo"></widget>
+
+                <widgets section="middle-bottom" class="editable"></widgets>
+            </div>
+
+            <div class="col-md-2">
+                <widgets section="right" class="editable"></widgets>
+            </div>
+        </div>
+    </div>
+</section>

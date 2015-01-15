@@ -1,0 +1,203 @@
+{
+    "available": [
+        {
+            "type": "Components.Demo.CarouselDemo",
+            "title": "Carousel Demo",
+            "description": "Carousel Demo description"
+        },
+        {
+            "type": "Components.Demo.AccordionDemo",
+            "title": "Accordion Demo",
+            "description": "Accordion Demo description",
+            "canRemove": true,
+            "settings": {
+                "modal": {
+                    "size": "lg"
+                },
+                "schema-form": {
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "name": { "type": "string", "minLength": 2, "title": "Name", "description": "Name or alias" },
+                            "nickname": { "type": "string", "minLength": 2, "title": "Nickname", "format": "html" },
+                            "oneAtATime": { "type": "boolean", "title": "One at a time" },
+                            "title": {
+                                "title": "Title",
+                                "type": "string",
+                                "enum": ["Dr","Jr","Sir","Mrs","Mr"]
+                            }
+                        }
+                    },
+
+                    "form": [
+                        "oneAtATime",
+                        {
+                            "key": "nickname",
+                            "autosave": true,
+                            "type": "wysiwyg",
+                            "ckeditorOptions": {
+                                "height": "100px",
+                                "removePlugins": "elementspath",
+                                "toolbar": [
+                                    {
+                                        "name": "basicstyles",
+                                        "items": [ "Bold", "Italic", "Strike", "Underline" ]
+                                    }
+                                ]
+                            }
+                        },
+                        "name",
+                        "title"
+                    ]
+                },
+
+                "model": {
+                    "name": "Clem Fandango",
+                    "oneAtATime": true,
+                    "nickname": "<p>Hello!</p>"
+                }
+            }
+        },
+        {
+            "type": "Components.Demo.EditorDemo",
+            "title": "Editor Demo",
+            "description": "Editor Demo description",
+            "settings": {
+                "schema-form": {
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "editorTest": { "type": "string", "title": "Editor test", "format": "html" }
+                        }
+                    },
+
+                    "form": [
+                        {
+                            "key": "editorTest",
+                            "type": "wysiwyg",
+                            "ckeditorOptions": {
+                                "height": "250px",
+                                "removePlugins": "elementspath",
+                                "toolbar": [
+                                    {
+                                        "name": "basicstyles",
+                                        "items": [ "Bold", "Italic", "Strike", "Underline" ]
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+
+                "model": {
+                    "editorTest": "<strong>Editor</strong> <em>test</em>..."
+                }
+            }
+        },
+        {
+            "type": "Components.Demo.ButtonsDemo",
+            "title": "Buttons Demo",
+            "description": "Buttons Demo description",
+            "settings": {
+                "modal": {
+                    "size": "lg"
+                },
+                "controller": "Components.Demo.AccordionDemo"
+            }
+        },
+        {
+            "type": "Components.Demo.DatePickerDemo",
+            "title": "DatePicker Demo",
+            "description": "DatePicker Demo description"
+        },
+        {
+            "type": "Components.Demo.DropDownDemo",
+            "title": "DropDown Demo",
+            "description": "DropDown Demo description"
+        },
+        {
+            "type": "Components.Demo.ModalDemo",
+            "title": "Modal Demo",
+            "description": "Modal Demo description"
+        },
+        {
+            "type": "Components.Demo.ProgressBarDemo",
+            "title": "ProgressBar Demo",
+            "description": "ProgressBar Demo description"
+        },
+        {
+            "type": "Components.Demo.TabsDemo",
+            "title": "Tabs Demo",
+            "description": "Tabs Demo description"
+        },
+        {
+            "type": "Components.Demo.TypeaheadDemo",
+            "title": "Typeahead Demo",
+            "description": "Typeahead Demo description"
+        },
+        {
+            "type": "Components.Demo.PaginationDemo",
+            "title": "Pagination Demo",
+            "description": "Pagination Demo description"
+        },
+        {
+            "type": "Components.Demo.FormDemo",
+            "title": "Form Demo",
+            "description": "Form Demo description"
+        },
+        {
+            "type": "Components.Demo.HelloWorldDemo",
+            "title": "Hello World Demo",
+            "description": "Hello World Demo description",
+            "settings": {
+                "schema-form": {
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "name": { "type": "string", "title": "Name", "format": "html" }
+                        }
+                    },
+
+                    "form": [
+                        {
+                            "key": "name",
+                            "type": "wysiwyg",
+                            "ckeditorOptions": {
+                                "height": "100px",
+                                "removePlugins": "elementspath",
+                                "toolbar": [
+                                    {
+                                        "name": "basicstyles",
+                                        "items": [ "Bold", "Italic", "Strike", "Underline" ]
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+
+                "model": {
+                    "name": "Hello <strong>World</strong>!"
+                }
+            }
+        }
+    ],
+    "sections": {
+        "left": {
+            "installed": [
+            ]
+        },
+        "middle": {
+            "installed": [
+            ]
+        },
+        "middle-bottom": {
+            "installed": [
+            ]
+        },
+        "right": {
+            "installed": [
+            ]
+        }
+    }
+}

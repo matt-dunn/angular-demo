@@ -1,0 +1,75 @@
+.cke_chrome {
+    box-shadow: none !important;
+    border: none !important;
+
+    .cke_inner {
+        overflow: hidden;
+        border: 1px solid $input-border !important;
+    }
+
+    .cke_top, .cke_bottom {
+        background: none !important;
+    }
+
+    .cke_button_on {
+        box-shadow: none !important;
+        background-image: none !important;
+        background-color: #ddd !important;
+    }
+}
+
+.ng-ckeditor {
+    .cke_chrome {
+        display: block;
+        font-size: $font-size-base !important;
+        line-height: $line-height-base !important;
+        color: $input-color !important;
+        background-color: inherit !important;
+        background-image: none !important; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+
+        .cke_inner {
+            border-width: 2px !important;
+            border-radius: $input-border-radius !important;
+        }
+
+        //        @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+
+        @include placeholder();
+
+        &.cke_focus {
+            .cke_inner {
+                overflow: hidden !important;
+
+                @include transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s);
+                border-color: $input-border-focus !important;
+                outline: 0;
+            }
+        }
+
+        .cke_top, .cke_bottom {
+            background: none !important;
+        }
+    }
+}
+
+.has-error .cke_chrome {
+    &.cke_focus {
+        .cke_inner {
+            border-color: $brand-danger !important;
+        }
+    }
+    .cke_inner {
+        border-color: $brand-danger !important;
+    }
+}
+
+.has-success .cke_chrome {
+    &.cke_focus {
+        .cke_inner {
+            border-color: $brand-success !important;
+        }
+    }
+    .cke_inner {
+        border-color: $brand-success !important;
+    }
+}

@@ -1,0 +1,26 @@
+@import "variables";
+@import "bootstrap";
+
+// Application:
+@import "app";
+
+@import "../../../app/lib/com/rpi/angular/widgets/directives/widget/sass/main";
+
+// Controller views:
+@import "../../../app/lib/com/rpi/angular/widgets/available/sass/main";
+@import "../../../app/lib/com/rpi/angular/widgets/installed/sass/main";
+
+@import "ng-sortable/ng-sortable";
+@import "ng-sortable/ng-sortable.style";
+
+@import "../../../app/components/main/sass/main";
+@import "../../../app/components/navBar/sass/main";
+
+@import "../../../app/components/demo/phoneDetail/sass/main";
+@import "../../../app/components/demo/phoneList/sass/main";
+
+@import "../../../app/components/demo/editorDemo/sass/main";
+@import "../../../app/lib/com/rpi/angular/autosave/sass/main";
+
+// Specialisations:
+@import "ckeditor/skins/override";

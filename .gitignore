@@ -1,0 +1,12 @@
+logs/*
+!.gitkeep
+node_modules/
+tmp
+.idea
+.DS_Store
+*.zip
+*.min.*
+*.log
+app/bower_components
+.sass-cache
+test/reports
