@@ -46,14 +46,12 @@ module.exports = function(grunt) {
                 configFile: '../karma.conf.js'
             },
             unit: {
-                singleRun: true
-            },
-            phantom: {
                 singleRun: true,
                 browsers: ['PhantomJS']
             },
             debug: {
-                singleRun: false
+                singleRun: false,
+                browsers: ['Firefox']
             }
         },
 

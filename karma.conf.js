@@ -14,21 +14,24 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-//            'app/lib/requirejs/require.js',
-//            'app/bower_components/jquery/jquery.js',
-//            'app/bower_components/angular/angular.js',
-//            'app/bower_components/angular-mocks/angular-mocks.js',
+            {pattern: 'test/test-main.js', included: true},
 
-//            '../app/main.js',
+            {pattern: 'app/**/*Spec.js', included: false},
+            {pattern: 'app/lib/**/*.js', included: false},
+            {pattern: 'app/components/**/*.js', included: false},
+            {pattern: 'app/bower_components/**/*.js', included: false},
 
-//            'app/lib/*.js',
-
-//            'test/unit/filtersSpec.js',
-//            'unit/*Spec.js'
+            {pattern: 'app/app.routes.js', included: false},
+            {pattern: 'app/bootstrap.js', included: false},
+            {pattern: 'app/app.js', included: false},
+            {pattern: 'app/app.config.js', included: false}
         ],
 
         // list of files to exclude
-        exclude: [],
+        exclude: [
+//            'app/bootstrap.js',
+            'app/main.js'
+        ],
 
         // test results reporter to use
         // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
@@ -73,9 +76,9 @@ module.exports = function (config) {
         // - Safari (only Mac)
         // - PhantomJS
         // - IE (only Windows)
-        browsers: ['PhantomJS'],
+        browsers: ['Firefox'],
 
-//        urlRoot: "/app/",
+//        urlRoot: "",
 
         // If browser does not capture in given timeout [ms], kill it
         captureTimeout: 5000,
