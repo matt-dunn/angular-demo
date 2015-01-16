@@ -18,75 +18,77 @@ define([
         var $rootScope,
             $scope,
             $httpBackend,
-            $service;
+            $service,
+            $q;
 
-        beforeEach(inject(['$rootScope', '$httpBackend', 'Lib.Com.Rpi.Angular.Widgets.Services.WidgetsService', function(_$rootScope_, _$httpBackend_, _$service_) {
+        beforeEach(inject(['$rootScope', '$httpBackend', '$q', 'Lib.Com.Rpi.Angular.Widgets.Services.WidgetsService', function(_$rootScope_, _$httpBackend_, _$q_, _$service_) {
             $rootScope = _$rootScope_;
             $scope = $rootScope.$new();
             $httpBackend = _$httpBackend_;
             $service = _$service_;
+            $q = _$q_;
 
-            $httpBackend.expectGET('widgets/widgets.json').
-                respond(
-                {
-                    "available": [
-                        {
-                            "type": "Components.Demo.CarouselDemo",
-                            "title": "Carousel Demo",
-                            "description": "Carousel Demo description"
-                        }
-                    ],
-                    "sections": {
-                        "left": {
-                            "installed": [
-                            ]
-                        },
-                        "middle": {
-                            "installed": [
-                            ]
-                        },
-                        "middle-bottom": {
-                            "installed": [
-                            ]
-                        },
-                        "right": {
-                            "installed": [
-                            ]
+            $httpBackend
+                .whenGET('widgets/widgets.json')
+                .respond(
+                    {
+                        "available": [
+                            {
+                                "type": "Components.Demo.CarouselDemo",
+                                "title": "Carousel Demo",
+                                "description": "Carousel Demo description"
+                            }
+                        ],
+                        "sections": {
+                            "left": {
+                                "installed": [
+                                ]
+                            },
+                            "middle": {
+                                "installed": [
+                                ]
+                            },
+                            "middle-bottom": {
+                                "installed": [
+                                ]
+                            },
+                            "right": {
+                                "installed": [
+                                ]
+                            }
                         }
                     }
-                }
-            );
+                );
 
             $rootScope.$digest();
         }]));
 
+        afterEach(function() {
+            $httpBackend.verifyNoOutstandingExpectation();
+            $httpBackend.verifyNoOutstandingRequest();
+        });
+
         describe('getAvailableWidgets', function() {
-            it('should return all available widgets', inject(['$q', function ($q) {
-                var deferredSuccess = $q.defer();
-                deferredSuccess.resolve([
+            it('should return all available widgets', function() {
+                var response = null;
+
+                $service.getAvailableWidgets()
+                    .then(function(widgets) {
+                        response = widgets;
+                    });
+
+                $httpBackend.flush();
+
+                $rootScope.$apply();
+
+                expect(response).toEqual([
                     {
                         "type": "Components.Demo.CarouselDemo",
                         "title": "Carousel Demo",
                         "description": "Carousel Demo description"
                     }
                 ]);
-                spyOn($service, 'getAvailableWidgets').andReturn(deferredSuccess.promise);
-
-                var result = null;
-                $service.getAvailableWidgets().then(function(widgets) {
-                    console.log("RESOLVED", widgets)
-                    result = widgets;
-                })
-
-                $scope.$digest();
-                expect(result).toEqual([
-                    {
-                        "type": "Components.Demo.CarouselDemo",
-                        "title": "Carousel Demo",
-                        "description": "Carousel Demo description"
-                    }
-                ]);
-            }]));
+            });
         });
     });
 });

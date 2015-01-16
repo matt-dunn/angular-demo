@@ -31,13 +31,41 @@ module.exports = function(grunt) {
                 options: {
                     jshintrc: '../app/components/.jshintrc'
                 },
-                src: ['../app/components/**/*.js', '!../app/components/**/*.min.js']
+                src: ['../app/components/**/*.js', '!../app/components/**/*.min.js', '!../**/*Spec.js']
             },
             libSrc: {
                 options: {
                     jshintrc: '../app/lib/com/rpi/.jshintrc'
                 },
-                src: ['../app/lib/com/rpi/**/*.js', '!../app/lib/com/rpi/**/*.min.js']
+                src: ['../app/lib/com/rpi/**/*.js', '!../app/lib/com/rpi/**/*.min.js', '!../**/*Spec.js']
+            },
+            spec: {
+                options: {
+                    "curly": true,
+                    "eqeqeq": true,
+                    "immed": true,
+                    "latedef": true,
+                    "newcap": true,
+                    "noarg": true,
+                    "sub": true,
+                    "undef": true,
+                    "unused": true,
+                    "boss": true,
+                    "eqnull": true,
+                    "browser": true,
+                    "predef": [
+                        "beforeEach",
+                        "afterEach",
+                        "describe",
+                        "inject",
+                        "it",
+                        "expect",
+                        "module",
+                        "define",
+                        "console"
+                    ]
+                },
+                src: ['../app/**/*Spec.js']
             }
         },
 
@@ -51,7 +79,7 @@ module.exports = function(grunt) {
             },
             debug: {
                 singleRun: false,
-                browsers: ['Firefox']
+                browsers: ['Chrome']
             }
         },
 

@@ -25,7 +25,7 @@ define([
             $scope = $rootScope.$new();
             $httpBackend = _$httpBackend_;
 
-            $httpBackend.expectGET('widgets/widgets.json').
+            $httpBackend.whenGET('widgets/widgets.json').
                 respond(
                 {
                     "available": [
@@ -62,9 +62,9 @@ define([
         }));
 
         it('should toggle edit mode to true', function() {
-            expect($scope.isEditMode).toBe(false)
+            expect($scope.isEditMode).toBe(false);
             $scope.toggleEditMode();
-            expect($scope.isEditMode).toBe(true)
+            expect($scope.isEditMode).toBe(true);
         });
     });
 });

@@ -15,8 +15,8 @@ define([
     ) {
     "use strict";
 
-    app.register.service('Lib.Com.Rpi.Angular.Widgets.Services.WidgetsService', ['$q', '$resource', 'localStorageService',
-        function($q, $resource, localStorageService) {
+    app.register.service('Lib.Com.Rpi.Angular.Widgets.Services.WidgetsService', ['$q', '$http', 'localStorageService',
+        function($q, $http, localStorageService) {
             var _queue = [],
                 _data = {
                     widgets: null
@@ -45,9 +45,7 @@ define([
                 } else if(_queue.length === 0) {
                     _queue.push(defer);
 
-                    $resource('widgets/widgets.json', {}, {
-                        query: {method:'GET', params:{}, isArray:false}
-                    }).get(function(response) {
+                    $http.get('widgets/widgets.json').success(function(response) {
                         // Normalise the response...
                         angular.forEach(response.sections, function(section) {
                             angular.forEach(section.installed, function(type, key) {
