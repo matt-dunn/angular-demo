@@ -1,5 +1,5 @@
 <div class="form-group {{form.htmlClass}} schema-form-select"
-     ng-class="{'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false, 'is-required': form.required}">
+     ng-class="{'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false, 'is-required': form.required && !form.readonly}">
   <label class="control-label" ng-show="showTitle()" for="{{form.key.join('-') + '-' + $id}}">
     {{form.title}}
   </label>

@@ -1,4 +1,4 @@
-<div class="form-group has-feedback {{form.htmlClass}} schema-form-textarea" ng-class="{'has-error': hasError(), 'has-success': hasSuccess(), 'is-required': form.required}">
+<div class="form-group has-feedback {{form.htmlClass}} schema-form-textarea" ng-class="{'has-error': hasError(), 'has-success': hasSuccess(), 'is-required': form.required && !form.readonly}">
   <label class="control-label" ng-show="showTitle()" for="{{form.key.join('-') + '-' + $id}}">{{form.title}}</label>
   <textarea class="form-control {{form.fieldHtmlClass}}"
             sf-changed="form"

@@ -1,5 +1,5 @@
 <div class="form-group checkbox schema-form-checkbox {{form.htmlClass}}"
-     ng-class="{'has-error': hasError(), 'has-success': hasSuccess(), 'is-required': form.required}">
+     ng-class="{'has-error': hasError(), 'has-success': hasSuccess(), 'is-required': form.required && !form.readonly}">
     <label>
         <input type="checkbox"
                sf-changed="form"
