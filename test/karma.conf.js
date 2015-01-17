@@ -33,8 +33,19 @@ module.exports = function (config) {
             'app/main.js'
         ],
 
-        // test results reporter to use
-        // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
+        plugins: [
+            'karma-requirejs',
+            'karma-coverage',
+            'karma-junit-reporter',
+            'karma-teamcity-reporter',
+            'karma-chrome-launcher',
+            'karma-firefox-launcher',
+            'karma-jasmine',
+            'karma-phantomjs-launcher'
+        ],
+
+                // test results reporter to use
+        // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage', 'teamcity'
         reporters: ['progress', 'junit', 'coverage'],
 
         preprocessors: {
@@ -50,7 +61,8 @@ module.exports = function (config) {
         },
 
         junitReporter: {
-            outputFile: 'test/reports/test/unit-test-results.xml'
+            outputFile: 'test/reports/test/unit-test-results.xml',
+            suite: 'Angular Demo'
         },
 
         // web server port
