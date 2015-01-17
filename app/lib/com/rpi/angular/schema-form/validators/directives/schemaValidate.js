@@ -50,7 +50,7 @@ define([
 
                                         if (validator.async === true) {
                                             ctrl.$asyncValidators[validatorDetails.type] = function(modelValue, viewValue) {
-                                                if (ctrl.$isEmpty(modelValue) || $scope.form.readonly) {
+                                                if (ctrl.$isEmpty(modelValue) || $scope.form.readonly || ctrl.$pristine) {
                                                     return $q.when();
                                                 }
 
@@ -85,7 +85,7 @@ define([
                                         } else {
                                             ctrl.$validators[validatorDetails.type] = function(modelValue, viewValue) {
                                                 if (!$scope.schemaError()) {
-                                                    if (ctrl.$isEmpty(modelValue) || $scope.form.readonly) {
+                                                    if (ctrl.$isEmpty(modelValue) || $scope.form.readonly || ctrl.$pristine) {
                                                         return true;
                                                     }
 
