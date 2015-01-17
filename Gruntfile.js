@@ -23,21 +23,21 @@ module.exports = function(grunt) {
         jshint: {
             gruntfile: {
                 options: {
-                    jshintrc: '../app/components/.jshintrc'
+                    jshintrc: 'app/components/.jshintrc'
                 },
                 src: 'Gruntfile.js'
             },
             src: {
                 options: {
-                    jshintrc: '../app/components/.jshintrc'
+                    jshintrc: 'app/components/.jshintrc'
                 },
-                src: ['../app/components/**/*.js', '!../app/components/**/*.min.js', '!../**/*Spec.js']
+                src: ['app/components/**/*.js', '!app/components/**/*.min.js', '!**/*Spec.js']
             },
             libSrc: {
                 options: {
-                    jshintrc: '../app/lib/com/rpi/.jshintrc'
+                    jshintrc: 'app/lib/com/rpi/.jshintrc'
                 },
-                src: ['../app/lib/com/rpi/**/*.js', '!../app/lib/com/rpi/**/*.min.js', '!../**/*Spec.js']
+                src: ['app/lib/com/rpi/**/*.js', '!app/lib/com/rpi/**/*.min.js', '!**/*Spec.js']
             },
             spec: {
                 options: {
@@ -65,13 +65,13 @@ module.exports = function(grunt) {
                         "console"
                     ]
                 },
-                src: ['../app/**/*Spec.js']
+                src: ['app/**/*Spec.js']
             }
         },
 
         karma: {
             options: {
-                configFile: '../karma.conf.js'
+                configFile: 'test/karma.conf.js'
             },
             unit: {
                 singleRun: true,
@@ -106,15 +106,15 @@ module.exports = function(grunt) {
 
 //                    optimize: "none",
 
-                    mainConfigFile: "../app/main.js",
+                    mainConfigFile: "app/main.js",
 
-                    baseUrl: "../app",
+                    baseUrl: "app",
 
                     include: [
                         'main',
                         "requireLib"
                     ],
-                    out: "../app/app-full.min.js",
+                    out: "app/app-full.min.js",
                     stubModules: ['lib/requirejs/text', 'lib/com/rpi/requirejs/angularjsView']
 //                    config: {
 //                        'routeResolver': {
@@ -132,15 +132,15 @@ module.exports = function(grunt) {
         uglify: {
             build: {
                 files: grunt.file.expandMapping([
-                    '../app/app.js',
-                    '../app/app.*.js',
-                    '../app/main.js',
-                    '../app/bootstrap.js',
-                    '../app/components/**/*.js',
-                    '!../app/components/**/*.min.js',
-                    '../app/lib/**/*.js',
-//                    '!../app/lib/**/*.min.js',
-//                    '!../app/lib/ckeditor/**'
+                    'app/app.js',
+                    'app/app.*.js',
+                    'app/main.js',
+                    'app/bootstrap.js',
+                    'app/components/**/*.js',
+                    '!app/components/**/*.min.js',
+                    'app/lib/**/*.js',
+//                    '!app/lib/**/*.min.js',
+//                    '!app/lib/ckeditor/**'
                 ], '', {
                     rename: function(destBase, destPath) {
                         return destBase+destPath.replace('.js', '.min.js');
@@ -155,10 +155,10 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: grunt.file.expandMapping([
-                    '../app/components/**/*.html',
-                    '!../app/components/**/*.min.html',
-                    '../app/lib/**/*.html',
-                    '!../app/lib/**/*.min.html'
+                    'app/components/**/*.html',
+                    '!app/components/**/*.min.html',
+                    'app/lib/**/*.html',
+                    '!app/lib/**/*.min.html'
                 ], '', {
                     rename: function(destBase, destPath) {
                         return destBase+destPath.replace('.html', '.min.html');
@@ -173,13 +173,13 @@ module.exports = function(grunt) {
                     force: true
                 },
                 files: grunt.file.expandMapping([
-                    '../app/**/*.min.js',
-                    '../app/components/**/*.min.js',
-                    '../app/lib/**/*.min.js',
-                    '../app/components/**/*.min.html',
-                    '../app/lib/**/*.min.html',
-                    '!../app/bower_components/**/*.js',
-                    '!../app/lib/angular/schema-form/**/*.js'
+                    'app/**/*.min.js',
+                    'app/components/**/*.min.js',
+                    'app/lib/**/*.min.js',
+                    'app/components/**/*.min.html',
+                    'app/lib/**/*.min.html',
+                    '!app/bower_components/**/*.js',
+                    '!app/lib/angular/schema-form/**/*.js'
                 ])
             }
         },
@@ -187,9 +187,9 @@ module.exports = function(grunt) {
         compass: {
             dev: {
                 options: {
-                    basePath: '../src/main/sass',
+                    basePath: 'src/main/sass',
                     environment: 'dev',
-                    config: '../src/main/sass/config.rb',
+                    config: 'src/main/sass/config.rb',
                     force: grunt.option('force'),
                     outputStyle: "expanded",
                     debugInfo: true
@@ -197,9 +197,9 @@ module.exports = function(grunt) {
             },
             release: {
                 options: {
-                    basePath: '../src/main/sass',
+                    basePath: 'src/main/sass',
                     environment: 'production',
-                    config: '../src/main/sass/config.rb',
+                    config: 'src/main/sass/config.rb',
                     outputStyle: 'compressed',
                     force: grunt.option('force')
                 }
@@ -208,18 +208,18 @@ module.exports = function(grunt) {
 
         'recursive-compass': {
             dev: {
-                src: ['../app/components/**/*.{scss,sass}'],
+                src: ['app/components/**/*.{scss,sass}'],
                 options: {
-//                    basePath: '../src/main/sass',
-//                    appDir: '../app',
+//                    basePath: 'src/main/sass',
+//                    appDir: 'app',
 //                    sassDir: '.',
-//                    cssDir: '../components',
+//                    cssDir: 'components',
 
                     sassDir: '.',
                     cssDir: '.',
 
                     environment: 'dev',
-//                    config: '../src/main/sass/config.rb',
+//                    config: 'src/main/sass/config.rb',
 //                    force: grunt.option('force'),
                     outputStyle: "expanded",
                     debugInfo: true,
@@ -227,7 +227,7 @@ module.exports = function(grunt) {
                 }
             },
             release: {
-                src: ['../app/components/**/*.{scss,sass}'],
+                src: ['app/components/**/*.{scss,sass}'],
                 options: {
                     outputStyle: 'compressed',
                     sassDir: '.',
