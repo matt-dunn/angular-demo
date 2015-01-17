@@ -3,52 +3,11 @@ define([
     'angular',
     './services/data',
     'lib/com/rpi/angular/autosave/directives/autosave',
-    'angularjsView!./formDemo.html'
+    'angularjsView!./formDemo.html',
+    './schema-form/validators/sf-validator.test.sync',
+    './schema-form/validators/sf-validator.test.async'
 ], function (app, angular) {
     "use strict";
-
-    app.register.factory("sf-validator.test.sync", [function () {
-        return {
-            async: false,
-            validate: function(modelValue) {
-                if (modelValue && modelValue.value !== "item2") {
-                    return false;
-                }
-
-                return true;
-            }
-        };
-    }]);
-
-    app.register.factory("sf-validator.test.async", ['$q', '$timeout', function ($q, $timeout) {
-        var timeout = null;
-
-        return {
-            async: true,
-            validate: function(modelValue) {
-                var def = $q.defer();
-
-                console.log("Checking...", modelValue);
-                timeout = $timeout(function() {
-                    // Mock a delayed response
-                    if (modelValue.toLowerCase() === "valid") {
-                        console.log("OK");
-                        def.resolve();
-                    } else {
-                        console.log("NOPE");
-                        def.reject("default");
-                    }
-
-                }, 2000);
-
-                return def.promise;
-            },
-            abort: function() {
-                console.log("Abort");
-                $timeout.cancel(timeout);
-            }
-        };
-    }]);
 
     app.register.controller('Components.Demo.FormDemoController', [
         '$scope',
