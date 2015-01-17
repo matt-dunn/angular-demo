@@ -14,7 +14,7 @@ define([
         'Components.Demo.FormDemo.Services.Data',
         function($scope, DataService) {
 
-            DataService.load($scope.componentId).then(function(data) {
+            DataService.load("Components.Demo.FormDemoController").then(function(data) {
                 $scope.model = data.model;
 
                 $scope.schema = data.schema;

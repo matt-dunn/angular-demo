@@ -26,7 +26,7 @@ define([
                         $scope.deferredType = dependencyResolver.getTemplateUrl($scope.type);
                     });
                 }],
-                template: '<div class="widget-installed-container" ng-include="deferredType" ng-cloak ng-init="componentId = id"></div>'
+                template: '<div class="widget-installed-container" ng-include="deferredType" ng-cloak></div>'
             };
         }]);
 });

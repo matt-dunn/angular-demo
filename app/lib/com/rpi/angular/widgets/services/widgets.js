@@ -159,12 +159,14 @@ define([
                 },
 
                 /**
-                 * Save widget data
+                 * Install a widget
                  *
                  * @returns {angular.Promise}
                  */
-                save: function() {
+                install: function(widget) {
                     var defer = $q.defer();
+
+                    console.log("INSTALL", widget);
 
                     getWidgets().then(function(widgets) {
                         saveWidgets(widgets).then(function() {

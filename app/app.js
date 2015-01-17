@@ -7,6 +7,7 @@ define([
     'angular-resource',
     'angular-route',
     'angular-animate',
+    'angular-uuid-service',
     'ui.bootstrap',
     'lib/com/rpi/angular/navbar/providers/navbar',
     'lib/angular/ng-sortable/ng-sortable',
@@ -43,7 +44,8 @@ define([
             'schemaForm-typeahead',
             'LocalStorageModule',
             'btford.markdown',
-            'rpi.navbar'
+            'rpi.navbar',
+            'uuid'
         ]);
 
     return app;

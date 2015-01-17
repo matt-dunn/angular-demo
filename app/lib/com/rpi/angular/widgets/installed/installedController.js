@@ -35,7 +35,7 @@ define([
                 });
 
             $scope.install = function (type, widget) {
-                WidgetsService.save().then(function() {
+                WidgetsService.install(widget).then(function() {
                     $rootScope.$emit('WidgetsController.installed', {widget: widget});
                 });
             };
@@ -125,13 +125,13 @@ define([
                     return true;
                 },
                 itemMoved: function (event) {
-                    WidgetsService.save().then(function() {
+                    WidgetsService.install(event.source.itemScope.widget).then(function() {
                         $rootScope.$emit('WidgetsController.installed', {widget: event.source.itemScope.widget});
                     });
                     console.log("itemMoved", event.source.itemScope.widget, event.source.sortableScope.$parent.section, event.dest.sortableScope.$parent.section, event);
                 },
                 orderChanged: function(event) {
-                    WidgetsService.save().then(function() {
+                    WidgetsService.install(event.source.itemScope.widget).then(function() {
                         $rootScope.$emit('WidgetsController.installed', {widget: event.source.itemScope.widget});
                     });
                     console.log("orderChanged", event.source.itemScope.widget, event.source.sortableScope.$parent.section, event.dest.sortableScope.$parent.section, event);

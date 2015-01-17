@@ -19,7 +19,7 @@ define([
 
             cssInjector.add("css/main.css", module).then(function() {
                 WidgetsService.getSettings("Components.Demo.AccordionDemo").then(function(settings) {
-                    console.log("SETUP Components.Demo.AccordionDemoController", $scope.componentId);
+                    console.log("SETUP Components.Demo.AccordionDemoController");
 
                     $scope.data = {settings: settings};
 
