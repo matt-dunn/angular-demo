@@ -1,11 +1,13 @@
 {
     "available": [
         {
+            "id": "d921207f-e077-46d7-b4da-2793e4762b19",
             "type": "Components.Demo.CarouselDemo",
             "title": "Carousel Demo",
             "description": "Carousel Demo description"
         },
         {
+            "id": "f99e105e-ed24-4e9b-bd09-3feba9405c9e",
             "type": "Components.Demo.AccordionDemo",
             "title": "Accordion Demo",
             "description": "Accordion Demo description",
@@ -59,6 +61,7 @@
             }
         },
         {
+            "id": "03250cb5-c593-45b5-821d-ffdcbd200f52",
             "type": "Components.Demo.EditorDemo",
             "title": "Editor Demo",
             "description": "Editor Demo description",
@@ -95,6 +98,7 @@
             }
         },
         {
+            "id": "03250cb5-c593-45b5-821d-ffdcbd200f52",
             "type": "Components.Demo.ButtonsDemo",
             "title": "Buttons Demo",
             "description": "Buttons Demo description",
@@ -106,46 +110,55 @@
             }
         },
         {
+            "id": "fa662347-cbf0-4fec-8abf-a331b515ccf2",
             "type": "Components.Demo.DatePickerDemo",
             "title": "DatePicker Demo",
             "description": "DatePicker Demo description"
         },
         {
+            "id": "49e44eaf-883c-4a76-9563-432f973208a8",
             "type": "Components.Demo.DropDownDemo",
             "title": "DropDown Demo",
             "description": "DropDown Demo description"
         },
         {
+            "id": "b2eecc20-aaf6-4a77-97ec-ccd67cf1a68b",
             "type": "Components.Demo.ModalDemo",
             "title": "Modal Demo",
             "description": "Modal Demo description"
         },
         {
+            "id": "838e8427-59d4-4079-a657-bc4b83180a63",
             "type": "Components.Demo.ProgressBarDemo",
             "title": "ProgressBar Demo",
             "description": "ProgressBar Demo description"
         },
         {
+            "id": "97275acc-1ebc-49f6-8e2e-4126f604e571",
             "type": "Components.Demo.TabsDemo",
             "title": "Tabs Demo",
             "description": "Tabs Demo description"
         },
         {
+            "id": "caa659a5-2de2-438a-93da-008e9b04f0fe",
             "type": "Components.Demo.TypeaheadDemo",
             "title": "Typeahead Demo",
             "description": "Typeahead Demo description"
         },
         {
+            "id": "897c692c-d9dc-49f0-895e-15aae411c39d",
             "type": "Components.Demo.PaginationDemo",
             "title": "Pagination Demo",
             "description": "Pagination Demo description"
         },
         {
+            "id": "2cabf13c-d2d7-42bf-95a5-3c6808fef73a",
             "type": "Components.Demo.FormDemo",
             "title": "Form Demo",
             "description": "Form Demo description"
         },
         {
+            "id": "62270c4b-eafc-4da2-8efc-5835ba5a89d4",
             "type": "Components.Demo.HelloWorldDemo",
             "title": "Hello World Demo",
             "description": "Hello World Demo description",

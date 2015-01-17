@@ -16,7 +16,9 @@ define([
     app.register.service('Components.Demo.FormDemo.Services.Data', ['$q', '$timeout',
         function($q, $timeout) {
             var dataService = {
-                load: function() {
+                load: function(id) {
+                    console.log("Loading data for '" + id + "'");
+                    
                     var defer = $q.defer();
 
                     $timeout(function() {

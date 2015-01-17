@@ -17,7 +17,8 @@ define([
             return {
                 restrict: 'E',
                 scope: {
-                    type: "@"
+                    type: "@",
+                    id: "@"
                 },
                 controller: ['$scope', '$templateCache', 'dependencyResolver', function($scope, $templateCache, dependencyResolver) {
                     dependencyResolver.load($scope.type).then(function() {
@@ -25,7 +26,7 @@ define([
                         $scope.deferredType = dependencyResolver.getTemplateUrl($scope.type);
                     });
                 }],
-                template: '<div class="widget-installed-container" ng-include="deferredType" ng-cloak></div>'
+                template: '<div class="widget-installed-container" ng-include="deferredType" ng-cloak ng-init="componentId = id"></div>'
             };
         }]);
 });
