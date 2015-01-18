@@ -24,13 +24,12 @@ module.exports = function (config) {
             {pattern: 'app/app.routes.js', included: false},
             {pattern: 'app/bootstrap.js', included: false},
             {pattern: 'app/app.js', included: false},
-            {pattern: 'app/app.config.js', included: false}
+            {pattern: 'app/app.config.js', included: false},
+            {pattern: 'app/main.js', included: false}
         ],
 
         // list of files to exclude
         exclude: [
-//            'app/bootstrap.js',
-            'app/main.js'
         ],
 
         plugins: [

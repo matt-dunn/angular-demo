@@ -4,7 +4,6 @@
     "name": "angular-demo",
     "description": "AngularJS Demo",
     "repository": "https://github.com/matt-dunn/angular-demo",
-    "license": "MIT",
     "devDependencies": {
         "grunt": "~0.4.1",
         "grunt-contrib-requirejs": "~0.4.1",
