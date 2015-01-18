@@ -22,6 +22,14 @@ npm install
 npm test
 ```
 
+## Build Application
+
+```sh
+grunt
+```
+
+To see a list of available tasks use ```grunt -help```.
+
 ## Run webserver
 
 ```sh
