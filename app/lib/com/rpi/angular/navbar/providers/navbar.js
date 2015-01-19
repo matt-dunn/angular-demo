@@ -17,6 +17,7 @@ define([
             activeClass: 'active',
             routeAttr: 'data-match-route',
             routeDisplayAttr: 'data-match-route-display',
+            titleSeparator: " - ",
             strict: false
         };
 

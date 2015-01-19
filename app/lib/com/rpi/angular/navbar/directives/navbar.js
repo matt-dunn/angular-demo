@@ -12,13 +12,18 @@ define([
 ], function (app, angular) {
     'use strict';
 
-    app.register.directive('rpiNavbar', ['$window', '$location', '$navbar', function($window, $location, $navbar) {
+    app.register.directive('rpiNavbar', ['$route', '$window', '$location', '$navbar', '$document', function($route, $window, $location, $navbar, $document) {
 
         var defaults = $navbar.defaults;
 
         return {
             restrict: 'A',
+            scope: false,
             link: function postLink(scope, element, attr) {
+                var $documentTitle = $document.find("title");
+                if ($documentTitle.data("title") === undefined) {
+                    $documentTitle.data("title", $documentTitle.text());
+                }
 
                 // Directive options
                 var options = angular.copy(defaults);
@@ -27,6 +32,13 @@ define([
                         options[key] = attr[key];
                     }
                 });
+
+                var matchedElement = element[0].querySelectorAll('[' + options.routeAttr + '=\'' + $route.current.$$route.originalPath + '\']');
+                if (matchedElement.length > 0) {
+                    $documentTitle.text(matchedElement[0].dataset.pageTitle + options.titleSeparator + $documentTitle.data("title"));
+                } else {
+                    $documentTitle.text($documentTitle.data("title"));
+                }
 
                 // Watch for the $location
                 scope.$watch(function() {
