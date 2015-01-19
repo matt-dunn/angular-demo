@@ -45,6 +45,12 @@ module.exports = function(grunt) {
                 },
                 src: ['app/lib/com/rpi/**/*.js', '!app/lib/com/rpi/**/*.min.js', '!**/*Spec.js']
             },
+            testSrc: {
+                options: {
+                    jshintrc: 'src/test/.jshintrc'
+                },
+                src: ['src/test/test-main.js', 'src/test/**/*Spec.js']
+            },
             spec: {
                 options: {
                     "curly": true,
@@ -101,8 +107,8 @@ module.exports = function(grunt) {
                     deps: [
                         'components/navBar/navBarController',
 
-                        'components/main/mainController',
-                        'components/about/aboutController',
+                        'pages/main/mainController',
+                        'pages/about/aboutController',
 
                         'lib/com/rpi/angular/widgets/installed/installedController',
                         'lib/com/rpi/angular/widgets/available/availableController',
