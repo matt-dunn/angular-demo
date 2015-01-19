@@ -45,7 +45,7 @@ define([
                 } else if(_queue.length === 0) {
                     _queue.push(defer);
 
-                    $http.get('widgets/widgets.json').success(function(response) {
+                    $http.get('/service/widgets/widgets.json').success(function(response) {
                         // Normalise the response...
                         angular.forEach(response.sections, function(section) {
                             angular.forEach(section.installed, function(type, key) {
