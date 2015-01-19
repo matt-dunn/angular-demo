@@ -8,8 +8,8 @@ http_path = "/app/"
 css_dir = "../../../app/css"
 sass_dir = "/"
 images_dir = "../app/css/i"
-generated_images_dir = "../app/css/i"
-javascripts_dir = "../app/js"
+generated_images_dir = "../../../app/css/i"
+# javascripts_dir = "../../../app/js"
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed
