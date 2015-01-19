@@ -191,8 +191,10 @@ module.exports = function(grunt) {
                 files: grunt.file.expandMapping([
                     'app/**/*.min.js',
                     'app/components/**/*.min.js',
-                    'app/lib/**/*.min.js',
                     'app/components/**/*.min.html',
+                    'app/pages/**/*.min.js',
+                    'app/pages/**/*.min.html',
+                    'app/lib/**/*.min.js',
                     'app/lib/**/*.min.html',
                     '!app/bower_components/**/*.js',
                     '!app/lib/angular/schema-form/**/*.js'
