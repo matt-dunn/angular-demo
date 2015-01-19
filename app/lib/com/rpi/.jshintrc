@@ -1,4 +1,5 @@
 {
+    "globalstrict": true,
     "curly": true,
     "eqeqeq": true,
     "immed": true,
@@ -12,7 +13,6 @@
     "eqnull": true,
     "browser": true,
     "predef": [
-        "module",
         "define",
         "console"
     ]

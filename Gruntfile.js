@@ -1,4 +1,6 @@
 module.exports = function(grunt) {
+    "use strict";
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
@@ -27,7 +29,7 @@ module.exports = function(grunt) {
         jshint: {
             gruntfile: {
                 options: {
-                    jshintrc: 'app/components/.jshintrc'
+                    jshintrc: '.jshintrc'
                 },
                 src: 'Gruntfile.js'
             },
@@ -234,17 +236,152 @@ module.exports = function(grunt) {
         }
     });
 
-//    require('matchdep').filter('grunt-*').forEach(grunt.loadNpmTasks);
-
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-minify-html');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
-    grunt.loadNpmTasks('grunt-contrib-compass');
-    grunt.loadNpmTasks('grunt-recursive-compass');
     grunt.loadNpmTasks('grunt-build-lifecycle');
     grunt.loadNpmTasks('grunt-karma');
+
+    // Locally override 'grunt-recursive-compass':
+    //      The original task did not return the process return status to grunt and therefore did not fail the build if there was a compilation issue.
+//    grunt.loadNpmTasks('grunt-recursive-compass');
+    (function() {
+        var cmd = process.platform === 'win32' ? 'compass.bat' : 'compass';
+        var dargs = require('dargs');
+        var path = require('path');
+        var sassPartialReg = /^_/;
+
+        function compile(args, cb) {
+            var child = grunt.util.spawn({
+                cmd: cmd,
+                args: args
+            }, function(err, result, code) {
+                var success = code === 0;
+
+                if (err) {
+                    grunt.log.warn(err);
+                }
+
+                if (code === 1 && /Nothing to compile/g.test(result.stderr)) {
+                    success = true;
+                }
+
+                cb(success);
+            }).on('exit', function(code){
+                if (code === 127) {
+                    grunt.log.warn(
+                        'You need to have Ruby and Compass installed ' +
+                            'and in your system PATH for this task to work. ' +
+                            'More info: https://github.com/psyrendust/grunt-recursive-compass'
+                    );
+                }
+            });
+            child.stdout.pipe(process.stdout);
+            child.stderr.pipe(process.stderr);
+        }
+
+        grunt.registerMultiTask('recursive-compass', 'Recursively compile Compass to CSS.', function() {
+            var options = this.options();
+            var filesToProcess = [];
+            var myArgs = ['compile'].concat(dargs(options));
+            var cb = this.async();
+
+            // Iterate over all specified file groups.
+            this.files.forEach(function(f) {
+                filesToProcess = filesToProcess.concat(f.src.filter(function(filepath) {
+                    // Warn on and remove invalid source files (if nonull was set).
+                    if (!grunt.file.exists(filepath)) {
+                        grunt.log.warn('Source file "' + filepath + '" not found.');
+                        return false;
+                    }
+                    if (grunt.file.isFile(filepath)) {
+                        return !sassPartialReg.test(path.basename(filepath));
+                    }
+                    return false;
+                }));
+            });
+
+            grunt.verbose.writeflags(options, 'Options');
+
+            myArgs = myArgs.concat(filesToProcess);
+
+            compile(myArgs, function (success) {
+                cb(success);
+            });
+        });
+    })();
+
+    // Locally override 'grunt-contrib-compass':
+    //      The original task did not return the process return status to grunt and therefore did not fail the build if there was a compilation issue.
+//    grunt.loadNpmTasks('grunt-contrib-compass');
+    (function() {
+        var compass = require('grunt-contrib-compass/tasks/lib/compass').init(grunt);
+
+        function compile(args, cb) {
+            var child = grunt.util.spawn({
+                cmd: args.shift(),
+                args: args
+            }, function (err, result, code) {
+                var success = code === 0;
+
+                if (code === 127) {
+                    return grunt.warn(
+                        'You need to have Ruby and Compass installed ' +
+                            'and in your system PATH for this task to work. ' +
+                            'More info: https://github.com/gruntjs/grunt-contrib-compass'
+                    );
+                }
+
+                // `compass compile` exits with 1 and outputs "Nothing to compile"
+                // on stderr when it has nothing to compile.
+                // https://github.com/chriseppstein/compass/issues/993
+                // Don't fail the task in this situation.
+                if (code === 1 && /Nothing to compile/g.test(result.stderr)) {
+                    success = true;
+                }
+
+                cb(success);
+            });
+            child.stdout.pipe(process.stdout);
+            child.stderr.pipe(process.stderr);
+        }
+
+        grunt.registerMultiTask('compass', 'Compile Sass to CSS using Compass', function () {
+            var options = this.options();
+            var cb = this.async();
+
+            // display compilation time
+            if (!options.clean) {
+                options.time = true;
+            }
+
+            // create a function to retroactively add a banner to the top of the
+            // generated files, if specified
+            var bannerCallback = compass.buildBannerCallback(grunt, options);
+            // create a temporary config file if there are 'raw' options or
+            // settings not supported as CLI arguments
+            var configContext = compass.buildConfigContext(options);
+            // get the array of arguments for the compass command
+            var args = compass.buildArgsArray(options);
+
+            configContext(function (err, path) {
+                if (err) {
+                    grunt.fail.warn(err);
+                }
+
+                if (path) {
+                    args.push('--config', path);
+                }
+
+                compile(args, function (success) {
+                    bannerCallback();
+                    cb(success);
+                });
+            });
+        });
+    })();
 
     grunt.registerTask('default', ['deploy']);
 };

@@ -1,3 +1,5 @@
+"use strict";
+
 /**!
  *
  * All rights reserved. Copyright (c) RPI Ltd 2014

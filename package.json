@@ -16,6 +16,7 @@
         "grunt-contrib-compass": "~0.4.1",
         "grunt-recursive-compass": "0.2.x",
 
+        "dargs": "^2.0.3",
         "chai": "~1.5.0",
         "istanbul": "~0.1.34",
         "sinon-chai": "~2.3.1",

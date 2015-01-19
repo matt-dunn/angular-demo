@@ -1,15 +1,16 @@
 {
-  "globalstrict": true,
-  "globals": {
-    "angular": false,
+    "globalstrict": true,
+    "globals": {
+        "angular": false,
 
-    "browser": false,
-    "element": false,
-    "by": false,
+        "browser": false,
+        "element": false,
+        "by": false,
 
-    "describe": false,
-    "beforeEach": false,
-    "it": false,
-    "expect": false
-  }
+        "describe": false,
+        "beforeEach": false,
+        "it": false,
+        "expect": false,
+        "process": true
+    }
 }
