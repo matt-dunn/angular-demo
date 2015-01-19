@@ -14,7 +14,7 @@ define([
 
     beforeEach(module(app.name));
 
-    describe('Components.MainController', function() {
+    describe('Pages.MainController', function() {
         var $rootScope,
             $scope,
             $httpBackend,
@@ -25,7 +25,7 @@ define([
             $scope = $rootScope.$new();
             $httpBackend = _$httpBackend_;
 
-            $ctrl = $controller('Components.MainController', {$scope: $scope});
+            $ctrl = $controller('Pages.MainController', {$scope: $scope});
 
             $rootScope.$digest();
         }));

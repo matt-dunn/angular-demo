@@ -10,7 +10,7 @@ define([
         '$scope',
         '$rootScope',
         function($scope, $rootScope) {
-            console.log("Components.MainController");
+            console.log("Pages.MainController");
 
             var eventListeners = [];
             $scope.isEditMode = false;

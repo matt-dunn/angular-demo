@@ -7,7 +7,7 @@ define([
 
     app.register.controller('Pages.AboutController', [
         function() {
-            console.log("Components.AboutController");
+            console.log("Pages.AboutController");
         }]
     );
 });
