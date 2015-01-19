@@ -150,6 +150,8 @@ module.exports = function(grunt) {
                     'app/bootstrap.js',
                     'app/components/**/*.js',
                     '!app/components/**/*.min.js',
+                    'app/pages/**/*.js',
+                    '!app/pages/**/*.min.js',
                     'app/lib/**/*.js',
                     '!app/lib/**/*.min.js',
                     '!app/lib/ckeditor/**'
@@ -169,6 +171,8 @@ module.exports = function(grunt) {
                 files: grunt.file.expandMapping([
                     'app/components/**/*.html',
                     '!app/components/**/*.min.html',
+                    'app/pages/**/*.html',
+                    '!app/pages/**/*.min.html',
                     'app/lib/**/*.html',
                     '!app/lib/**/*.min.html'
                 ], '', {
