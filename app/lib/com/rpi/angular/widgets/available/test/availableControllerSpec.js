@@ -25,7 +25,7 @@ define([
             $scope = $rootScope.$new();
             $httpBackend = _$httpBackend_;
 
-            $httpBackend.whenGET('widgets/widgets.json').
+            $httpBackend.whenGET('/service/widgets/widgets.json').
                 respond(
                 {
                     "available": [

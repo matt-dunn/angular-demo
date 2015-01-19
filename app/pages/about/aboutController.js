@@ -5,7 +5,7 @@ define([
 ], function (app) {
     "use strict";
 
-    app.register.controller('Components.AboutController', [
+    app.register.controller('Pages.AboutController', [
         function() {
             console.log("Components.AboutController");
         }]

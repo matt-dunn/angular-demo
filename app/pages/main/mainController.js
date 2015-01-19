@@ -6,7 +6,7 @@ define([
 ], function (app) {
     "use strict";
 
-    app.register.controller('Components.MainController', [
+    app.register.controller('Pages.MainController', [
         '$scope',
         '$rootScope',
         function($scope, $rootScope) {

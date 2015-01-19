@@ -10,8 +10,8 @@ define([
             var dependency = dependencyResolverProvider.route;
 
             $routeProvider
-                .when('/about', dependency.resolve('Components.About'))
-                .when('/main', dependency.resolve('Components.Main'))
+                .when('/about', dependency.resolve('Pages.About'))
+                .when('/main', dependency.resolve('Pages.Main'))
                 .otherwise({ redirectTo: '/about' });
         }]);
 

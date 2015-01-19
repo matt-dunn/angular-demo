@@ -29,7 +29,7 @@ define([
             $q = _$q_;
 
             $httpBackend
-                .whenGET('widgets/widgets.json')
+                .whenGET('/service/widgets/widgets.json')
                 .respond(
                     {
                         "available": [

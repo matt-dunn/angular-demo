@@ -41,7 +41,7 @@ require([
     });
 
     require([
-        'angular',
+        '../.',
         'app',
         'app.config',
         'angular-mocks'
