@@ -214,6 +214,7 @@ module.exports = function(grunt) {
             dev: {
                 src: ['app/components/**/*.{scss,sass}'],
                 options: {
+                    config: 'src/main/sass/config.rb',
                     sassDir: '.',
                     cssDir: '.',
                     outputStyle: "expanded",
@@ -224,10 +225,12 @@ module.exports = function(grunt) {
             release: {
                 src: ['app/components/**/*.{scss,sass}'],
                 options: {
+                    config: 'src/main/sass/config.rb',
                     outputStyle: 'compressed',
                     sassDir: '.',
                     cssDir: '.',
-                    force: grunt.option('force')
+                    force: true,
+                    watch: false
                 }
             }
         }
