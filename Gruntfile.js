@@ -6,13 +6,17 @@ module.exports = function(grunt) {
             validate: [
                 'jshint'
             ],
-            compile: [],
+            compile: [
+                'requirejs',
+                'recursive-compass:release',
+                'compass:release'
+            ],
             test: [
-                'karma:phantom'
+                'karma:unit'
             ],
             'package': [
-                'concat',
-                'uglify'
+                'uglify',
+                'minifyHtml'
             ],
             'integration-test': [],
             verify: [],
@@ -139,8 +143,8 @@ module.exports = function(grunt) {
                     'app/components/**/*.js',
                     '!app/components/**/*.min.js',
                     'app/lib/**/*.js',
-//                    '!app/lib/**/*.min.js',
-//                    '!app/lib/ckeditor/**'
+                    '!app/lib/**/*.min.js',
+                    '!app/lib/ckeditor/**'
                 ], '', {
                     rename: function(destBase, destPath) {
                         return destBase+destPath.replace('.js', '.min.js');
@@ -201,7 +205,7 @@ module.exports = function(grunt) {
                     environment: 'production',
                     config: 'src/main/sass/config.rb',
                     outputStyle: 'compressed',
-                    force: grunt.option('force')
+                    force: true
                 }
             }
         },
@@ -210,17 +214,8 @@ module.exports = function(grunt) {
             dev: {
                 src: ['app/components/**/*.{scss,sass}'],
                 options: {
-//                    basePath: 'src/main/sass',
-//                    appDir: 'app',
-//                    sassDir: '.',
-//                    cssDir: 'components',
-
                     sassDir: '.',
                     cssDir: '.',
-
-                    environment: 'dev',
-//                    config: 'src/main/sass/config.rb',
-//                    force: grunt.option('force'),
                     outputStyle: "expanded",
                     debugInfo: true,
                     force: grunt.option('force')
@@ -250,11 +245,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-build-lifecycle');
     grunt.loadNpmTasks('grunt-karma');
 
-    grunt.registerTask('build', ['jshint', 'uglify', 'minifyHtml', 'requirejs', 'compass:dev', 'recursive-compass:dev']);
-    grunt.registerTask('compile', ['jshint',  'requirejs', 'compass:dev', 'recursive-compass:dev']);
-    grunt.registerTask('sass', ['recursive-compass:dev', 'compass:dev']);
-
-    grunt.registerTask('production', ['jshint', 'uglify', 'minifyHtml', 'requirejs', 'compass:release', 'recursive-compass:release']);
-
-    grunt.registerTask('default', ['compile']);
+    grunt.registerTask('default', ['deploy']);
 };
