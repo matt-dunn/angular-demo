@@ -411,4 +411,5 @@ module.exports = function(grunt) {
     })();
 
     grunt.registerTask('default', ['deploy']);
+    grunt.registerTask('run-tests', ['karma:unit',  'protractor']);
 };
