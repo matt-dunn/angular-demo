@@ -31,30 +31,6 @@ module.exports = function(grunt) {
         jshint: {
             gruntfile: {
                 options: {
-                    jshintrc: '.jshintrc'
-                },
-                src: 'Gruntfile.js'
-            },
-            src: {
-                options: {
-                    jshintrc: 'app/components/.jshintrc'
-                },
-                src: ['app/components/**/*.js', '!app/components/**/*.min.js', '!**/*Spec.js']
-            },
-            libSrc: {
-                options: {
-                    jshintrc: 'app/lib/com/rpi/.jshintrc'
-                },
-                src: ['app/lib/com/rpi/**/*.js', '!app/lib/com/rpi/**/*.min.js', '!**/*Spec.js']
-            },
-            testSrc: {
-                options: {
-                    jshintrc: 'src/test/.jshintrc'
-                },
-                src: ['src/test/test-main.js', 'src/test/**/*Spec.js', 'src/test/**/*Scenario.js']
-            },
-            spec: {
-                options: {
                     "curly": true,
                     "eqeqeq": true,
                     "immed": true,
@@ -68,18 +44,42 @@ module.exports = function(grunt) {
                     "eqnull": true,
                     "browser": true,
                     "predef": [
-                        "beforeEach",
-                        "afterEach",
-                        "describe",
-                        "inject",
-                        "it",
-                        "expect",
                         "module",
-                        "define",
-                        "console"
+                        "process",
+                        "require"
                     ]
                 },
-                src: ['app/**/*Spec.js']
+                src: 'Gruntfile.js'
+            },
+            src: {
+                options: {
+                    jshintrc: 'app/.jshintrc'
+                },
+                src: [
+                    'app/components/**/*.js',
+                    '!app/components/**/*.min.js',
+                    'app/pages/**/*.js',
+                    '!app/pages/**/*.min.js',
+                    '!**/*Spec.js']
+            },
+            libSrc: {
+                options: {
+                    jshintrc: 'app/lib/com/rpi/.jshintrc'
+                },
+                src: [
+                    'app/lib/com/rpi/**/*.js',
+                    '!app/lib/com/rpi/**/*.min.js',
+                    '!**/*Spec.js'
+                ]
+            },
+            testSrc: {
+                options: {
+                    jshintrc: 'src/.jshintrc'
+                },
+                src: [
+                    'src/test/test-main.js',
+                    'src/test/**/*Spec.js',
+                    'src/test/**/*Scenario.js']
             }
         },
 
