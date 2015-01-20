@@ -15,6 +15,7 @@
         "module": true,
         "require": true,
         "console": true,
-        "inject": true
+        "inject": true,
+        "afterEach": true
     }
 }

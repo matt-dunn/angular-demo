@@ -57,11 +57,11 @@ module.exports = function (config) {
 
         coverageReporter: {
             type: 'lcov', // lcov format supported by Coveralls
-            dir: 'test/reports/coverage'
+            dir: 'reports/test/coverage'
         },
 
         junitReporter: {
-            outputFile: 'test/reports/test/unit-test-results.xml',
+            outputFile: 'reports/test/unit-test-results.xml',
             suite: 'Angular Demo'
         },
 

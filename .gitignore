@@ -9,4 +9,4 @@ tmp
 *.log
 app/bower_components
 .sass-cache
-test/reports
+reports

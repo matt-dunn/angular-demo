@@ -20,7 +20,9 @@ module.exports = function(grunt) {
                 'uglify',
                 'minifyHtml'
             ],
-            'integration-test': [],
+            'integration-test': [
+                'protractor'
+            ],
             verify: [],
             install: [],
             deploy: []
@@ -49,7 +51,7 @@ module.exports = function(grunt) {
                 options: {
                     jshintrc: 'src/test/.jshintrc'
                 },
-                src: ['src/test/test-main.js', 'src/test/**/*Spec.js']
+                src: ['src/test/test-main.js', 'src/test/**/*Spec.js', 'src/test/**/*Scenario.js']
             },
             spec: {
                 options: {
@@ -92,6 +94,17 @@ module.exports = function(grunt) {
             debug: {
                 singleRun: false,
                 browsers: ['Chrome']
+            }
+        },
+
+        protractor: {
+            tests: {
+                configFile: "src/test/e2e/protractor-conf.js",
+                keepAlive: false, // If false, the grunt process stops when the test fails.
+                noColor: false, // If true, protractor will not use colors in its output.
+                args: {
+                    // Arguments passed to the command
+                }
             }
         },
 
@@ -189,6 +202,7 @@ module.exports = function(grunt) {
                     force: true
                 },
                 files: grunt.file.expandMapping([
+                    'reports',
                     'app/**/*.min.js',
                     'app/components/**/*.min.js',
                     'app/components/**/*.min.html',
@@ -255,6 +269,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-build-lifecycle');
     grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-protractor-runner');
 
     // Locally override 'grunt-recursive-compass':
     //      The original task did not return the process return status to grunt and therefore did not fail the build if there was a compilation issue.

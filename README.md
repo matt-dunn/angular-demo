@@ -16,21 +16,48 @@
 npm install
 ```
 
-## Run tests
+## Build
+
+The application is build using ```grunt`` with the following lifecycle:
+
+    * validate
+    * compile
+    * test
+    * package
+    * integration-test
+    * verify
+    * install
+    * deploy
+
+See [Maven Introduction to the Build Lifecycle](http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html).
+
+The ```clean``` task can be ued in conjunction with a phase to perform cleanup (delete reports, minified html/js, etc.).
+
+### Examples
 
 ```sh
-npm test
+grunt clean install
 ```
 
-## Build Application
+## Running Individual Tasks
+
+In addition, individual tasks can be executed. To see a list of available tasks use ```grunt -help```.
+
+### Examples
+
+To run only the unit tests:
 
 ```sh
-grunt
+grunt karma:unit
 ```
 
-To see a list of available tasks use ```grunt -help```.
+To run only the end-2-end tests:
 
-## Run webserver
+```sh
+grunt protractor
+```
+
+## Running the Webserver
 
 ```sh
 npm start

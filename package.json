@@ -15,6 +15,7 @@
         "grunt-contrib-clean": "~0.6.0",
         "grunt-contrib-compass": "~0.4.1",
         "grunt-recursive-compass": "0.2.x",
+        "grunt-protractor-runner": "1.2.x",
 
         "dargs": "^2.0.3",
         "chai": "~1.5.0",
@@ -41,6 +42,9 @@
         "coveralls": "~2.8.0",
 
         "protractor": "~1.0.0",
+        "protractor-http-mock": "latest",
+        "jasmine-reporters": "~1.0.x",
+        "mkdirp": "0.5.x",
         "http-server": "^0.6.1",
         "tmp": "0.0.23",
         "bower": "^1.3.1",
@@ -53,14 +57,14 @@
         "start": "http-server -a 0.0.0.0 -p 8000",
 
         "pretest": "npm install",
-        "test": "grunt test",
+        "test": "grunt clean test",
         "test-single-run": "node node_modules/karma/bin/karma start test/karma.conf.js  --single-run",
 
         "preupdate-webdriver": "npm install",
         "update-webdriver": "webdriver-manager update",
 
         "preprotractor": "npm run update-webdriver",
-        "protractor": "protractor test/protractor-conf.js",
+        "protractor": "protractor src/test/e2e/protractor-conf.js",
 
         "update-index-async": "node -e \"require('shelljs/global'); sed('-i', /\\/\\/@@NG_LOADER_START@@[\\s\\S]*\\/\\/@@NG_LOADER_END@@/, '//@@NG_LOADER_START@@\\n' + cat('bower_components/angular-loader/angular-loader.min.js') + '\\n//@@NG_LOADER_END@@', 'app/index-async.html');\""
     }
