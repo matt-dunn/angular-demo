@@ -37,8 +37,14 @@ exports.config = {
                     path += getSpecPath(suite.parentSuite);
                 }
 
-                path += ("/" + suite.description);
+                path += ("/" + sanitizePath(suite.description));
                 return path;
+            }
+
+            function sanitizePath(input, options) {
+                var replacement = (options && options.replacement) || '',
+                    regex = /[\/\?<>\\:\*\|":\x00-\x1f\x80-\x9f]/g;
+                return input.replace(regex, replacement);
             }
 
             this.reportSpecResults = function(spec) {
@@ -48,7 +54,7 @@ exports.config = {
                             var passed = spec.results().passed(),
                                 browserName = capabilities.caps_.browserName,
                                 passFail = (passed) ? 'pass' : 'FAIL',
-                                filename = browserName + '-' + passFail + '_' + spec.description + '.png',
+                                filename = sanitizePath(browserName + '-' + passFail + '_' + spec.description + '.png'),
                                 fullPath = __dirname + "/../../../reports/e2e/scenarios" + getSpecPath(spec.suite) + "/",
 
                                 fs = require('fs'),
