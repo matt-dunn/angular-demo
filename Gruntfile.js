@@ -219,6 +219,7 @@ module.exports = function(grunt) {
         compass: {
             dev: {
                 options: {
+                    sourcemap: true,
                     basePath: 'src/main/sass',
                     environment: 'dev',
                     config: 'src/main/sass/config.rb',
@@ -242,6 +243,7 @@ module.exports = function(grunt) {
             dev: {
                 src: ['app/components/**/*.{scss,sass}'],
                 options: {
+                    sourcemap: true,
                     sassDir: 'app/components',
                     cssDir: 'app/components',
                     outputStyle: "expanded",
