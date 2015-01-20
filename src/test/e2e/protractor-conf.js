@@ -2,7 +2,7 @@ exports.config = {
     allScriptsTimeout: 11000,
 
     specs: [
-        'e2e/**/*Scenario.js'
+        '**/*Scenario.js'
     ],
 
     mocks: {
@@ -25,6 +25,11 @@ exports.config = {
     },
 
     onPrepare: function(){
+        require('jasmine-reporters');
+        jasmine.getEnv().addReporter(
+            new jasmine.JUnitXmlReporter(__dirname + "/../../../reports/e2e/test-results/", true, true)
+        );
+
         jasmine.getEnv().addReporter(new function() {
             function getSpecPath(suite) {
                 var path = "";
@@ -44,7 +49,7 @@ exports.config = {
                                 browserName = capabilities.caps_.browserName,
                                 passFail = (passed) ? 'pass' : 'FAIL',
                                 filename = browserName + '-' + passFail + '_' + spec.description + '.png',
-                                fullPath = __dirname + "/../../reports/e2e/scenarios" + getSpecPath(spec.suite) + "/",
+                                fullPath = __dirname + "/../../../reports/e2e/scenarios" + getSpecPath(spec.suite) + "/",
 
                                 fs = require('fs'),
                                 mkdirp = require('mkdirp');
@@ -66,8 +71,8 @@ exports.config = {
         });
 
         require('protractor-http-mock').config = {
-            rootDirectory: __dirname + "/e2e/", // default value: process.cwd()
-            protractorConfig: '../protractor-conf.js' // default value: 'protractor.conf'
+            rootDirectory: __dirname, // default value: process.cwd()
+            protractorConfig: 'protractor-conf.js' // default value: 'protractor.conf'
         };
     }
 };
