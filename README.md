@@ -24,7 +24,7 @@ npm run update-webdriver
 
 ## Build
 
-The application is build using ```grunt`` with the following lifecycle:
+The application is build using ```grunt``` with the following lifecycle:
 
     * validate
     * compile

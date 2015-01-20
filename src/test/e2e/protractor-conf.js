@@ -54,8 +54,8 @@ exports.config = {
                             var passed = spec.results().passed(),
                                 browserName = capabilities.caps_.browserName,
                                 passFail = (passed) ? 'pass' : 'FAIL',
-                                filename = sanitizePath(browserName + '-' + passFail + '_' + spec.description + '.png'),
-                                fullPath = __dirname + "/../../../reports/e2e/scenarios" + getSpecPath(spec.suite) + "/",
+                                filename = sanitizePath(passFail + '-' + spec.description + '.png'),
+                                fullPath = __dirname + "/../../../reports/e2e/scenarios" + getSpecPath(spec.suite) + "/[" + browserName + "]/",
 
                                 fs = require('fs'),
                                 mkdirp = require('mkdirp');
