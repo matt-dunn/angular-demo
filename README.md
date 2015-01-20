@@ -16,6 +16,12 @@
 npm install
 ```
 
+*If you want to run the end-2-end protractor tests, first run:*
+
+```sh
+npm run update-webdriver
+```
+
 ## Build
 
 The application is build using ```grunt`` with the following lifecycle:
