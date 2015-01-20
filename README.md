@@ -49,6 +49,20 @@ grunt clean install
 
 In addition, individual tasks can be executed. To see a list of available tasks use ```grunt -help```.
 
+### Run SASS build only
+
+```sh
+grunt build-sass
+```
+
+NOTE: Add ```--force``` to the grunt command to force SASS build.
+
+### Run all tests only (unit/e2e)
+
+```sh
+grunt run-tests
+```
+
 ### Examples
 
 To run only the unit tests:

@@ -414,4 +414,5 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', ['deploy']);
     grunt.registerTask('run-tests', ['karma:unit',  'protractor']);
+    grunt.registerTask('build-sass', ['recursive-compass:dev',  'compass:dev']);
 };
