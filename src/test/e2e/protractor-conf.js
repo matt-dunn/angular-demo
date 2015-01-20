@@ -25,6 +25,8 @@ exports.config = {
     },
 
     onPrepare: function(){
+        browser.driver.manage().window().setSize(1024, 768);
+
         require('jasmine-reporters');
         jasmine.getEnv().addReporter(
             new jasmine.JUnitXmlReporter(__dirname + "/../../../reports/e2e/test-results/", true, true)
