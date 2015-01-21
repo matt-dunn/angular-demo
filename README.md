@@ -9,6 +9,10 @@
 ## Dependencies
 
 * [Node.js](http://nodejs.org/)
+* [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
+* [Compass](http://compass-style.org/install/)
+    * SASS will also be installed
+* [grunt-cli](http://gruntjs.com/getting-started)
 
 ## Install
 
