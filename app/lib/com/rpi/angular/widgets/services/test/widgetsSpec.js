@@ -21,11 +21,11 @@ define([
             $service,
             $q;
 
-        beforeEach(inject(['$rootScope', '$httpBackend', '$q', 'Lib.Com.Rpi.Angular.Widgets.Services.WidgetsService', function(_$rootScope_, _$httpBackend_, _$q_, _$service_) {
+        beforeEach(inject(['$rootScope', '$httpBackend', '$q', 'Lib.Com.Rpi.Angular.Widgets.Services.WidgetsService', function(_$rootScope_, _$httpBackend_, _$q_, _service_) {
             $rootScope = _$rootScope_;
             $scope = $rootScope.$new();
             $httpBackend = _$httpBackend_;
-            $service = _$service_;
+            $service = _service_;
             $q = _$q_;
 
             $httpBackend
