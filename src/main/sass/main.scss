@@ -21,5 +21,9 @@
 
 @import "../../../app/lib/com/rpi/angular/autosave/sass/main";
 
+// Search prototype:
+@import "../../../app/pages/search/sass/main";
+@import "../../../app/components/search/criteria/list/sass/main";
+
 // Specialisations:
 @import "ckeditor/skins/override";

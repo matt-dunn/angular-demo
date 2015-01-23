@@ -12,6 +12,7 @@ define([
             $routeProvider
                 .when('/about', dependency.resolve('Pages.About'))
                 .when('/main', dependency.resolve('Pages.Main'))
+                .when('/search', dependency.resolve('Pages.Search'))
                 .otherwise({ redirectTo: '/about' });
         }]);
 
