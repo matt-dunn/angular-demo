@@ -18,9 +18,9 @@ define([
                             return true;
                         }
 
-                        return !(-1 < $modelController.getModel().map(function(item) {
+                        return (-1 < $modelController.getModel().map(function(item) {
                             return item.toLowerCase();
-                        }).indexOf(modelValue.toLowerCase()));
+                        }).indexOf(modelValue.toLowerCase()) === false);
                     };
                 }
             };
