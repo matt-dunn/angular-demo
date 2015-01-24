@@ -12,23 +12,22 @@ define([
         function(dependencyResolver) {
             return {
                 restrict: 'E',
-                require: 'ngModel',
                 scope: {
                     type: "@",
-                    title: "@",
+                    sectionTitle: "@",
                     model: "=ngModel"
                 },
                 controller: function($scope) {
                     this.addCondition = function(term) {
                         $scope.model.addCondition($scope.type, term);
                         $scope.term = "";
-                        $scope.$broadcast("searchTerm.addCondition");
+                        $scope.$broadcast("searchCriteriaList.addCondition");
                     };
                     $scope.addCondition = this.addCondition;
 
                     this.removeCondition = function(term) {
                         $scope.model.removeCondition($scope.type, term);
-                        $scope.$broadcast("searchTerm.removeCondition");
+                        $scope.$broadcast("searchCriteriaList.removeCondition");
                     };
                     $scope.removeCondition = this.removeCondition;
                 },

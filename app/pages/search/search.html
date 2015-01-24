@@ -1,4 +1,7 @@
 <section ng-controller="Pages.SearchController" class="pages-search">
+    <header>
+        <h1>Full Text Search Wireframe</h1>
+    </header>
     <form class="search" name="frmSearch">
         <div ng-cloak ng-hide="isReady" class="highlight">
             <i class="fa fa-circle-o-notch fa-spin"></i> Initialising&#x2026;
@@ -6,25 +9,25 @@
         <div ng-cloak ng-show="isReady">
             <div class="row">
                 <div class="col-md-3">
-                    <search-criteria-list type="all" title="All Words" ng-model="search"></search-criteria-list>
+                    <search-criteria-list type="all" section-title="All Words" ng-model="search"></search-criteria-list>
                 </div>
                 <div class="col-md-3">
-                    <search-criteria-list type="exact" title="Exact Phrase" ng-model="search"></search-criteria-list>
+                    <search-criteria-list type="exact" section-title="Exact Phrase" ng-model="search"></search-criteria-list>
                 </div>
                 <div class="col-md-3">
-                    <search-criteria-list type="any" title="Any Words" ng-model="search"></search-criteria-list>
+                    <search-criteria-list type="any" section-title="Any Words" ng-model="search"></search-criteria-list>
                 </div>
                 <div class="col-md-3">
-                    <search-criteria-list type="exclude" title="Exclude Words" ng-model="search"></search-criteria-list>
+                    <search-criteria-list type="exclude" section-title="Exclude Words" ng-model="search"></search-criteria-list>
                 </div>
             </div>
 
-            <p>
+            <p class="pull-right">
                 <button type="button" class="btn btn-default btn-sm" ng-click="initSearchCriteria()">Reset</button>
                 <button type="button" class="btn btn-primary btn-sm" ng-click="performSearch()"><i class="fa fa-search"></i> Search</button>
             </p>
-
-            <pre>{{search.request}}</pre>
         </div>
     </form>
+
+    <pre>{{search.request | json}}</pre>
 </section>

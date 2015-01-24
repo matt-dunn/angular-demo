@@ -1,15 +1,22 @@
 <section class="components-search-criteria-list well">
     <header>
-        <label for="term-{{$id}}">{{title}}</label>
-        <input id="term-{{$id}}" name="term" ng-model="term" ng-required="true" search-criteria-list-model="model.request[type]" search-criteria-list-control-model="termControl"/>
-        <button type="button" class="btn btn-default btn-xs add" ng-click="addCondition(term)" ng-disabled="termControl.$invalid" title="Add criteria"><i class="fa fa-plus"></i></button>
+        <label for="term-{{$id}}">{{sectionTitle}}</label>
+        <span class="term">
+            <span ng-class="{'has-error': termControl.$invalid && !termControl.$error.required}">
+                <input id="term-{{$id}}" name="term" class="form-control" ng-model="term" ng-required="true" ng-minlength="3" search-criteria-list-model="model.request[type]" search-criteria-list-control-model="termControl"/>
+            </span>
+            <button type="button" class="btn btn-primary btn-sm add" ng-click="addCondition(term)" ng-disabled="termControl.$invalid" title="Add criteria"><i class="fa fa-plus"></i></button>
+        </span>
+
         <span class="help-block" ng-show="termControl.$error.unique">{unique value message}</span>
+        <span class="help-block" ng-show="termControl.$error.stopWord">{stop word message}</span>
+        <span class="help-block" ng-show="termControl.$error.minlength">{min length message}</span>
     </header>
 
     <ul class="list-inline criteria">
         <li ng-repeat="item in model.request[type]" class="label label-default">
             <span>{{item}}</span>
-            <button type="button" class="btn btn-danger btn-xs" ng-click="removeCondition(item)" title="Remove term"><i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-default btn-xs" ng-click="removeCondition(item)" title="Remove term"><i class="fa fa-minus"></i></button>
         </li>
     </ul>
 </section>

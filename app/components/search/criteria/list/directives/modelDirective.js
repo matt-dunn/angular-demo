@@ -1,5 +1,7 @@
 define([
-    'app'
+    'app',
+    './validators/uniqueValueDirective',
+    './validators/stopWordDirective'
 ], function (app) {
     "use strict";
 
@@ -15,15 +17,15 @@ define([
                 },
                 link: function($scope, $element, $attrs, $controller) {
                     var $control = $controller[0],
-                        searchTerm = $controller[1];
+                        searchCriteriaList = $controller[1];
 
                     $scope.controlModel = $control;
 
-                    $scope.$on("searchTerm.addCondition", function() {
+                    $scope.$on("searchCriteriaList.addCondition", function() {
                         $element[0].focus();
                     });
 
-                    $scope.$on("searchTerm.removeCondition", function() {
+                    $scope.$on("searchCriteriaList.removeCondition", function() {
                         $control.$validate();
                         $element[0].focus();
                     });
@@ -32,20 +34,17 @@ define([
                         if(event.which === 13) {
                             $scope.$apply(function () {
                                 if ($control.$valid) {
-                                    searchTerm.addCondition($control.$viewValue);
+                                    searchCriteriaList.addCondition($control.$viewValue);
                                 }
                             });
 
                             event.preventDefault();
                         }
                     });
-
-                    $control.$validators.unique = function(modelValue) {
-                        if ($control.$isEmpty(modelValue)) {
-                            return true;
-                        }
-
-                        return ($scope.model.indexOf(modelValue) === -1);
+                },
+                controller: function($scope) {
+                    this.getModel = function() {
+                        return $scope.model;
                     };
                 }
             };

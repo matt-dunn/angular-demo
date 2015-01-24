@@ -11,16 +11,27 @@ define([
     app.register.controller('Pages.SearchController', [
         '$scope',
         function($scope) {
-            console.log("Pages.AboutController");
+            console.log("Pages.SearchController");
 
             $scope.isReady = true;
 
             $scope.initSearchCriteria = function() {
                 $scope.search = new SearchModel({
                     all: [
-                        "test 1",
-                        "test 2",
-                        "test 3"
+                        "starfish",
+                        "reef",
+                        "pacific"
+                    ],
+                    "exact": [
+                        "blue ocean"
+                    ],
+                    "any": [
+                        "coral",
+                        "fish",
+                        "sand"
+                    ],
+                    "exclude": [
+                        "australia"
                     ]
                 });
             };
