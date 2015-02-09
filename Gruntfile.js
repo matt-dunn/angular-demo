@@ -361,6 +361,15 @@ module.exports = function(grunt) {
                         ],
                         dest: buildOptions.dirs.resources,
                         filter: 'isFile'
+                    },
+                    {
+                        cwd: 'target/build',
+                        expand: false,
+                        src: [
+                            "bower_components/ckeditor/**/*"
+                        ],
+                        dest: buildOptions.dirs.resources,
+                        filter: 'isFile'
                     }
                 ]
             }

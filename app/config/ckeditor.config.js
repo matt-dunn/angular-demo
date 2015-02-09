@@ -16,6 +16,7 @@ define([
         'Lib.Com.Rpi.Angular.CKEditor.ConfigProvider',
         function (ckeditorConfigProvider) {
             ckeditorConfigProvider.config({
+                basePath: "/bower_components/ckeditor/",
                 contentsCss: "css/ckeditor/contents.css"
             });
         }]);
