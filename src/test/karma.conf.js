@@ -23,7 +23,7 @@ module.exports = function (config) {
             {pattern: 'bower_components/objectpath/**/*.js', included: false},
             {pattern: 'bower_components/underscore/**/*.js', included: false},
             {pattern: 'bower_components/ckeditor/**/*.js', included: false},
-//            {pattern: 'bower_components/URIjs/**/*.js', included: false},
+            {pattern: 'bower_components/URIjs/**/*.js', included: false},
             {pattern: 'bower_components/rpi-library/**/*.js', included: false},
 
             // Include all application files:

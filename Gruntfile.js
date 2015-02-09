@@ -380,7 +380,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-protractor-runner');
 
     // Tasks:
-    grunt.registerTask('default', ['clean', 'install']);
+    grunt.registerTask('default', ['install']);
 
     grunt.registerTask('phase-compile-mvn', [
         'requirejs:' + buildOptions.target,
