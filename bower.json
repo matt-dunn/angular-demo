@@ -25,6 +25,6 @@
         "moment": "2.8.x",
         "bootswatch-scss":"3.2.x",
         "URIjs": "1.14.x",
-        "rpi-library": "latest"
+        "rpi-library": "1.x"
     }
 }
