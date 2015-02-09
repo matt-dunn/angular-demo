@@ -87,7 +87,7 @@ grunt protractor
 npm start
 ```
 
-The application will be served at [http://localhost:8000/app/](http://localhost:8000/app/).
+The application will be served at [http://localhost:8001/app/](http://localhost:8000/app/).
 
 ## Application Details
 

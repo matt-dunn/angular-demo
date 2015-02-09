@@ -16,17 +16,21 @@ module.exports = function (config) {
         files: [
             {pattern: 'src/test/test-main.js', included: true},
 
-            {pattern: 'app/**/*Spec.js', included: false},
-            {pattern: 'app/lib/**/*.js', included: false},
-            {pattern: 'app/pages/**/*.js', included: false},
-            {pattern: 'app/components/**/*.js', included: false},
-            {pattern: 'app/bower_components/**/*.js', included: false},
+            // Include application dependencies:
+            {pattern: 'bower_components/angular**/**/*.js', included: false},
+            {pattern: 'bower_components/require**/**/*.js', included: false},
+            {pattern: 'bower_components/tv4/**/*.js', included: false},
+            {pattern: 'bower_components/objectpath/**/*.js', included: false},
+            {pattern: 'bower_components/underscore/**/*.js', included: false},
+            {pattern: 'bower_components/ckeditor/**/*.js', included: false},
+//            {pattern: 'bower_components/URIjs/**/*.js', included: false},
+            {pattern: 'bower_components/rpi-library/**/*.js', included: false},
 
-            {pattern: 'app/app.routes.js', included: false},
-            {pattern: 'app/bootstrap.js', included: false},
-            {pattern: 'app/app.js', included: false},
-            {pattern: 'app/app.config.js', included: false},
-            {pattern: 'app/main.js', included: false}
+            // Include all application files:
+            {pattern: 'app/**/*.js', included: false},
+
+            // Include all application files:
+            {pattern: 'app/**/*.js', included: false},
         ],
 
         // list of files to exclude
@@ -44,7 +48,7 @@ module.exports = function (config) {
             'karma-phantomjs-launcher'
         ],
 
-                // test results reporter to use
+        // test results reporter to use
         // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage', 'teamcity'
         reporters: ['progress', 'junit', 'coverage'],
 
@@ -53,8 +57,7 @@ module.exports = function (config) {
             // do not include tests or libraries
             // (these files will be instrumented by Istanbul)
             'app/pages/**/!(*Spec|*.min).js': ['coverage'],
-            'app/components/**/!(*Spec|*.min).js': ['coverage'],
-            'app/lib/com/**/!(*Spec|*.min).js': ['coverage'],
+            'app/components/**/!(*Spec|*.min).js': ['coverage']
         },
 
         coverageReporter: {

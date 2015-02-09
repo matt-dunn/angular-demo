@@ -1,29 +1,36 @@
+/**!
+ *
+ * All rights reserved. Copyright (c) RPI Ltd 2015
+ *
+ * @author Matt Dunn
+ *
+ */
+
+/**!
+ *
+ * All rights reserved. Copyright (c) Ixxus Ltd 2015
+ *
+ * @author Matt Dunn
+ *
+ */
+
 define([
     'app',
-    'lib/showdown/extensions/github',
-    'lib/showdown/extensions/table',
-    'lib/showdown/extensions/prettify'
-], function (app) {
-    "use strict";
 
-    app.provider("AppConfig", function() {
-        this.$get = function() {
-            return {
-                ckeditor: {
-                    customConfig: "",
-                    contentsCss: "css/ckeditor/contents.css"
-                }
-            };
-        };
-    });
+    'config/app.config',
+    'config/markdown.config',
+    'config/ckeditor.config'
+], function (app, appConfig) {
+    "use strict";
 
     app.config([
         '$controllerProvider',
         '$compileProvider',
         '$filterProvider',
         '$provide',
-        'markdownConverterProvider',
-        function ($controllerProvider, $compileProvider, $filterProvider, $provide, markdownConverterProvider) {
+        function ($controllerProvider, $compileProvider, $filterProvider, $provide) {
+            $compileProvider.debugInfoEnabled(appConfig.angular.debugInfoEnabled);
+
             app.register =
             {
                 controller: $controllerProvider.register,
@@ -33,11 +40,8 @@ define([
                 service: $provide.service,
                 animation: app.animation
             };
-
-            markdownConverterProvider.config({
-                extensions: ['github', 'table', 'prettify']
-            });
         }]);
 
     return app;
 });
+

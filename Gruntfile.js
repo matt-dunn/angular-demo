@@ -1,27 +1,43 @@
+/*global module:true, process:true */
 module.exports = function(grunt) {
     "use strict";
+
+    var buildOptions = {
+        dirs: {
+            build: "target/build/",
+            resources: "target/resources/"
+        },
+        target: grunt.option('target') || 'dev'
+    };
+
+    console.info("Building target '" + buildOptions.target + "'");
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
         lifecycle: {
-            validate: [
-                'jshint'
+            'initialize': [
+                'jshint',
+                'copy:' + buildOptions.target,
+                'version:' + buildOptions.target,
+                'version:' + buildOptions.target + "Html",
+                'version:' + buildOptions.target + "HtmlMeta"
             ],
             compile: [
-                'requirejs',
-                'recursive-compass:release',
-                'compass:release'
+                'requirejs:' + buildOptions.target,
+                'compass:' + buildOptions.target,
+                'processhtml:' + buildOptions.target
             ],
             test: [
                 'karma:unit'
             ],
-            'package': [
-                'uglify',
-                'minifyHtml'
+            'prepare-package': [
+                'copy:resources'
+//                'uglify:' + buildOptions.target,
+//                'minifyHtml:' + buildOptions.target,
             ],
             'integration-test': [
-                'protractor'
+                'protractor:' + buildOptions.target
             ],
             verify: [],
             install: [],
@@ -31,55 +47,80 @@ module.exports = function(grunt) {
         jshint: {
             gruntfile: {
                 options: {
-                    "curly": true,
-                    "eqeqeq": true,
-                    "immed": true,
-                    "latedef": true,
-                    "newcap": true,
-                    "noarg": true,
-                    "sub": true,
-                    "undef": true,
-                    "unused": true,
-                    "boss": true,
-                    "eqnull": true,
-                    "browser": true,
-                    "predef": [
-                        "module",
-                        "process",
-                        "require"
-                    ]
+                    jshintrc: '.jshintrc'
                 },
                 src: 'Gruntfile.js'
             },
             src: {
                 options: {
-                    jshintrc: 'app/.jshintrc'
+                    jshintrc: '.jshintrc'
                 },
                 src: [
-                    'app/components/**/*.js',
-                    '!app/components/**/*.min.js',
-                    'app/pages/**/*.js',
-                    '!app/pages/**/*.min.js',
+                    'app/**/*.js',
+                    '!app/bower_components/**/*.js',
+                    '!app/**/*.min.js',
                     '!**/*Spec.js']
-            },
-            libSrc: {
-                options: {
-                    jshintrc: 'app/lib/com/rpi/.jshintrc'
-                },
-                src: [
-                    'app/lib/com/rpi/**/*.js',
-                    '!app/lib/com/rpi/**/*.min.js',
-                    '!**/*Spec.js'
-                ]
             },
             testSrc: {
                 options: {
-                    jshintrc: 'src/.jshintrc'
+                    jshintrc: '.jshintrc'
                 },
                 src: [
                     'src/test/test-main.js',
                     'src/test/**/*Spec.js',
                     'src/test/**/*Scenario.js']
+            }
+        },
+
+        version: {
+            options: {
+                // Example of extracting version from 'pom.xml':
+//                pkg: (function() {
+//                    var filename = "pom.xml",
+//                        parseString = require('xml2js').parseString,
+//                        version = null;
+//
+//                    parseString(grunt.file.read(filename), {normalize: true, ignoreAttrs: true, async: false}, function (err, result) {
+//                        try {
+//                            version = result.project.parent[0].version[0];
+//                            console.info("Extracted version '" + version + "' from '" + filename + "'");
+//                        } catch (ex) {
+//                            throw new Error("No version found in '" + filename + "'");
+//                        }
+//                    });
+//
+//                    return {version: version};
+//                })()
+            },
+            dev: {
+                src: ['package.json', 'bower.json', 'app/main.js']
+            },
+            devHtml: {
+                options: {
+                    prefix: '\\?version=*'
+                },
+                src: ['app/index*.html']
+            },
+            devHtmlMeta: {
+                options: {
+                    prefix: '<meta\\s*name="version"\\s*content="*'
+                },
+                src: ['app/index*.html']
+            },
+            release: {
+                src: ['package.json', 'bower.json', buildOptions.dirs.build + 'app/main.js']
+            },
+            releaseHtml: {
+                options: {
+                    prefix: '\\?version=*'
+                },
+                src: [buildOptions.dirs.build + 'app/index*.html']
+            },
+            releaseHtmlMeta: {
+                options: {
+                    prefix: '<meta\\s*name="version"\\s*content="*'
+                },
+                src: [buildOptions.dirs.build + 'app/index*.html']
             }
         },
 
@@ -98,64 +139,78 @@ module.exports = function(grunt) {
         },
 
         protractor: {
-            tests: {
+            dev: {
                 configFile: "src/test/e2e/protractor-conf.js",
                 keepAlive: false, // If false, the grunt process stops when the test fails.
+                noColor: false // If true, protractor will not use colors in its output.
+            },
+            release: {
+                configFile: buildOptions.dirs.build + "src/test/e2e/protractor-conf.js",
+                keepAlive: false, // If false, the grunt process stops when the test fails.
                 noColor: false, // If true, protractor will not use colors in its output.
-                args: {
-                    // Arguments passed to the command
+                options: {
+                    args: {
+                        baseUrl: 'http://localhost:8001/' + buildOptions.dirs.resources
+                    }
                 }
             }
         },
 
         requirejs: {
-            compile: {
-                options: {
-                    preserveLicenseComments: false,
+            options: {
+                preserveLicenseComments: false,
 
-                    paths: {
-                        requireLib: "lib/requirejs/require"
-                    },
+                deps: [
+                    'components/navBar/navBarController',
 
-                    deps: [
-                        'components/navBar/navBarController',
+                    'pages/main/mainController',
+                    'pages/about/aboutController',
 
-                        'pages/main/mainController',
-                        'pages/about/aboutController',
+                    'lib/com/rpi/angular/widgets/installed/installedController',
+                    'lib/com/rpi/angular/widgets/available/availableController',
 
-                        'lib/com/rpi/angular/widgets/installed/installedController',
-                        'lib/com/rpi/angular/widgets/available/availableController',
+                    'components/demo/editorDemo/editorDemoController'                ],
 
-                        'components/demo/editorDemo/editorDemoController'
-                    ],
-
-//                    optimize: "none",
-
-                    mainConfigFile: "app/main.js",
-
-                    baseUrl: "app",
-
-                    include: [
-                        'main',
-                        "requireLib"
-                    ],
-                    out: "app/app-full.min.js",
-                    stubModules: ['lib/requirejs/text', 'lib/com/rpi/requirejs/angularjsView']
-//                    config: {
-//                        'routeResolver': {
-//                            useMinified: true
-//                        }
-//                    }
+                include: [
+                    'main',
+                    "requireLib"
+                ],
+                stubModules: [
+                    '../bower_components/requirejs-text/text',
+                    'lib/com/rpi/requirejs/angularjsView',
+                    'lib/com/rpi/requirejs/buildVersion'
+                ]
 //                    wrap: {
 //                        start: "(function() {",
 //                        end: "}());"
 //                    }
+            },
+            dev: {
+                options: {
+                    paths: {
+                        requireLib: "../bower_components/requirejs/require"
+                    },
+                    mainConfigFile: "app/main.js",
+                    baseUrl: "app",
+                    out: "app/app-full.min.js"
+                }
+            },
+            release: {
+                options: {
+                    paths: {
+                        requireLib: "../bower_components/requirejs/require",
+                        'config/app.config': 'config/app.config.production'
+                    },
+                    mainConfigFile: buildOptions.dirs.build + "app/main.js",
+                    baseUrl: buildOptions.dirs.build + "app",
+                    out: buildOptions.dirs.build + "app/app-full.min.js"
                 }
             }
         },
 
         uglify: {
-            build: {
+            dev: {},
+            release: {
                 files: grunt.file.expandMapping([
                     'app/app.js',
                     'app/app.*.js',
@@ -164,13 +219,10 @@ module.exports = function(grunt) {
                     'app/components/**/*.js',
                     '!app/components/**/*.min.js',
                     'app/pages/**/*.js',
-                    '!app/pages/**/*.min.js',
-                    'app/lib/**/*.js',
-                    '!app/lib/**/*.min.js',
-                    '!app/lib/ckeditor/**'
+                    '!app/pages/**/*.min.js'
                 ], '', {
                     rename: function(destBase, destPath) {
-                        return destBase+destPath.replace('.js', '.min.js');
+                        return buildOptions.dirs.build + destBase + destPath.replace('.js', '.min.js');
                     }
                 })
             }
@@ -180,17 +232,16 @@ module.exports = function(grunt) {
             options: {
                 cdata: true
             },
-            dist: {
+            dev: {},
+            release: {
                 files: grunt.file.expandMapping([
                     'app/components/**/*.html',
                     '!app/components/**/*.min.html',
                     'app/pages/**/*.html',
-                    '!app/pages/**/*.min.html',
-                    'app/lib/**/*.html',
-                    '!app/lib/**/*.min.html'
+                    '!app/pages/**/*.min.html'
                 ], '', {
                     rename: function(destBase, destPath) {
-                        return destBase+destPath.replace('.html', '.min.html');
+                        return buildOptions.dirs.build + destBase + destPath.replace('.html', '.min.html');
                     }
                 })
             }
@@ -202,16 +253,17 @@ module.exports = function(grunt) {
                     force: true
                 },
                 files: grunt.file.expandMapping([
+                    buildOptions.dirs.build,
+                    buildOptions.dirs.resources,
                     'reports',
+                    'app/css/**/*.css',
+                    'app/css/**/*.map',
                     'app/**/*.min.js',
                     'app/components/**/*.min.js',
                     'app/components/**/*.min.html',
                     'app/pages/**/*.min.js',
                     'app/pages/**/*.min.html',
-                    'app/lib/**/*.min.js',
-                    'app/lib/**/*.min.html',
                     '!app/bower_components/**/*.js',
-                    '!app/lib/angular/schema-form/**/*.js'
                 ])
             }
         },
@@ -230,7 +282,7 @@ module.exports = function(grunt) {
             },
             release: {
                 options: {
-                    basePath: 'src/main/sass',
+                    basePath: buildOptions.dirs.build + 'src/main/sass',
                     environment: 'production',
                     config: 'src/main/sass/config.rb',
                     outputStyle: 'compressed',
@@ -252,7 +304,7 @@ module.exports = function(grunt) {
                 }
             },
             release: {
-                src: ['app/components/**/*.{scss,sass}'],
+                src: [buildOptions.dirs.build + 'app/components/**/*.{scss,sass}'],
                 options: {
                     sassDir: 'app/components',
                     cssDir: 'app/components',
@@ -261,9 +313,63 @@ module.exports = function(grunt) {
                     force: true
                 }
             }
+        },
+
+        processhtml: {
+            options: {
+            },
+            dev: {},
+            release: {
+                files: [
+                    {
+                        src: buildOptions.dirs.build + 'app/index.html',
+                        dest: buildOptions.dirs.build + 'app/index.html'
+                    }
+                ]
+            }
+        },
+
+        copy: {
+            dev: {},
+            release: {
+                files: [
+                    {
+                        expand: true,
+                        src: [
+                            "bower_components/**",
+                            "app/**",
+                            "resources/**",
+                            "src/**"
+                        ],
+                        dest: buildOptions.dirs.build,
+                        filter: 'isFile'
+                    }
+                ]
+            },
+            resources: {
+                files: [
+                    {
+                        cwd: 'target/build',
+                        expand: true,
+                        src: [
+                            "app/*.html",
+                            "app/css/**/*",
+                            "app/i/**/*",
+                            "app/*.min.js",
+                            "resources/**/*",
+                            "app/components/demo/**/*",
+                        ],
+                        dest: buildOptions.dirs.resources,
+                        filter: 'isFile'
+                    }
+                ]
+            }
         }
     });
 
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-processhtml');
+    grunt.loadNpmTasks('grunt-version');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-minify-html');
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -273,6 +379,19 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-protractor-runner');
 
+    // Tasks:
+    grunt.registerTask('default', ['clean', 'install']);
+
+    grunt.registerTask('phase-compile-mvn', [
+        'requirejs:' + buildOptions.target,
+        'processhtml:' + buildOptions.target
+    ]);
+
+    // Helper tasks:
+    grunt.registerTask('run-tests', ['karma:unit',  'protractor']);
+    grunt.registerTask('gh-pages', ['version', 'processhtml', 'install']);
+
+    // ================================================================================================================================================
     // Locally override 'grunt-recursive-compass':
     //      The original task did not return the process return status to grunt and therefore did not fail the build if there was a compilation issue.
 //    grunt.loadNpmTasks('grunt-recursive-compass');
@@ -411,8 +530,4 @@ module.exports = function(grunt) {
             });
         });
     })();
-
-    grunt.registerTask('default', ['deploy']);
-    grunt.registerTask('run-tests', ['karma:unit',  'protractor']);
-    grunt.registerTask('build-sass', ['recursive-compass:dev',  'compass:dev']);
 };

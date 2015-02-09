@@ -1,3 +1,11 @@
+/**!
+ *
+ * All rights reserved. Copyright (c) RPI Ltd 2015
+ *
+ * @author Matt Dunn
+ *
+ */
+
 define([
     'app'
 ], function (app) {

@@ -1,14 +1,14 @@
 // Bootstrap:
-@import "../../../app/bower_components/bootswatch-scss/flatly/variables";
+@import "../../../bower_components/bootswatch-scss/flatly/variables";
 
 //$web-font: "//fonts.googleapis.com/css?family=Lato:400,700,400italic";
 //$web-font: "fonts.css";
-$icon-font-path:            '../bower_components/bootstrap/fonts/';
+$icon-font-path:            'fonts/';
 $grid-gutter-width:         14px;
 $navbar-margin-bottom:      0;
 
-@import "../../../app/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
-@import "../../../app/bower_components/bootswatch-scss/flatly/bootswatch";
+@import "../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
+@import "../../../bower_components/bootswatch-scss/flatly/bootswatch";
 
 .modal-header .close {
     color: $brand-primary;

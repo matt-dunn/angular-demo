@@ -1,3 +1,5 @@
+"use strict";
+
 var baseUrl = "/base/app/",
     allTestFiles = [
     ],
@@ -10,11 +12,13 @@ var pathToModule = function(path) {
 Object.keys(window.__karma__.files).forEach(function(file) {
     if (TEST_REGEXP.test(file)) {
         // Normalize paths to RequireJS module names.
-        allTestFiles.push(pathToModule(file));
+        if (file.indexOf("bower_components/") === -1) {
+            allTestFiles.push(pathToModule(file));
+        }
     }
 });
 
-console.info(allTestFiles);
+console.info("\n\nTesting:\n" + allTestFiles.join("\n"));
 
 // First load the application requirejs config:
 require([
@@ -26,7 +30,7 @@ require([
         baseUrl: baseUrl,
 
         paths: {
-            'angular-mocks': 'bower_components/angular-mocks/angular-mocks'
+            'angular-mocks': '../bower_components/angular-mocks/angular-mocks'
         },
 
         shim: {
@@ -43,22 +47,17 @@ require([
     require([
         'angular',
         'app',
-        'app.config',
         'angular-mocks'
     ],
         function(angular, app) {
-            app.run(function() {
-                app.register =
-                {
-                    controller: app.controller,
-                    directive: app.directive,
-                    filter: app.filter,
-                    factory: app.factory,
-                    service: app.service,
-                    animation: app.animation
-                };
-            });
-
-            angular.bootstrap(null, [app.name]);
+            app.register =
+            {
+                controller: app.controller,
+                directive: app.directive,
+                filter: app.filter,
+                factory: app.factory,
+                service: app.service,
+                animation: app.animation
+            };
         });
 });

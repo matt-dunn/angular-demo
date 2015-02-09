@@ -1,7 +1,7 @@
 define([
     'module',
     'angular',
-    'lib/ObjectPath',
+    'ObjectPath',
     'tv4',
     'dependencyResolver',
     'angular-resource',
@@ -13,13 +13,14 @@ define([
     'lib/angular/ng-sortable/ng-sortable',
     'lib/angular/toArrayFilter',
     'lib/angular/ng-ckeditor/ng-ckeditor',
-    'lib/angular/angular-local-storage',
+    'angular-local-storage',
     'lib/com/rpi/angular/providers/angular-css-injector',
     'lib/com/rpi/angular/schema-form/decorators/bootstrap/bootstrap-decorator',
     'lib/com/rpi/angular/schema-form/plugins/ckeditor/bootstrap-ckeditor',
     'lib/com/rpi/angular/schema-form/plugins/typeahead/bootstrap-typeahead',
     'lib/com/rpi/angular/schema-form/validators/directives/schemaValidate',
-    'lib/angular/markdown'
+    'lib/angular/markdown',
+    'lib/com/rpi/angular/extensions/extendDeep',
 ], function (module, angular, ObjectPath, tv4) {
     "use strict";
 
@@ -28,7 +29,8 @@ define([
     // @TODO: must manually call registerModule??
     ObjectPath.registerModule(angular);
 
-    var appName = module.config().name + "App",
+    var config = module.config(),
+        appName = config.name + "App",
         app = angular.module(appName, [
             'ngRoute',
             'ngResource',
@@ -46,7 +48,7 @@ define([
             'btford.markdown',
             'rpi.navbar',
             'uuid'
-        ]);
+        ].concat(config.requires || []));
 
     return app;
 });

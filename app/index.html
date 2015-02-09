@@ -2,22 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="version" content="0.0.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Angular Demo</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/font-awesome/stylesheets/font-awesome.css">
+    <link rel="stylesheet" href="css/main.css?version=0.0.0">
+    <link rel="stylesheet" href="css/font-awesome/stylesheets/font-awesome.css?version=0.0.0">
 
-    <script>
-        // @TODO: find a better place for this...?
-        // Set ckeditor base path _before_ loading ckeditor. This is required when using the optimised version
-        // of the js as the default is to look in the same directory as the served file (root)
-        window.CKEDITOR_BASEPATH = "/app/lib/ckeditor/";
-    </script>
-
-    <!-- Development script: -->
-    <script data-main="main.js" src="lib/requirejs/require.js"></script>
-
-    <!-- Production (optimised) script: -->
-    <!--<script src="app-full.min.js"></script>-->
+    <!-- build:js app-full.min.js?version=0.0.0 -->
+    <script data-main="main.js" src="app-full.min.js?version=0.0.0"></script>
+    <!-- /build -->
 </head>
 <body class="requires-js">
 

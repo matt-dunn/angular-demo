@@ -1,7 +1,7 @@
 define([
     'app',
     'lib/com/rpi/angular/widgets/directives/widget',
-    'lib/com/rpi/angular/widgets/installed/directives/widgets',
+    'lib/com/rpi/angular/widgets/installed/directives/widgets/widgetsDirective',
     'angularjsView!./main.html'
 ], function (app) {
     "use strict";

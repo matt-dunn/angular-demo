@@ -1,0 +1,22 @@
+/**!
+ *
+ * All rights reserved. Copyright (c) Ixxus Ltd 2015
+ *
+ * @author Matt Dunn
+ *
+ */
+
+define([
+    'app',
+    'lib/com/rpi/angular/ckeditor/providers/config'
+], function (app) {
+    "use strict";
+
+    app.config([
+        'Lib.Com.Rpi.Angular.CKEditor.ConfigProvider',
+        function (ckeditorConfigProvider) {
+            ckeditorConfigProvider.config({
+                contentsCss: "css/ckeditor/contents.css"
+            });
+        }]);
+});
