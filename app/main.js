@@ -89,7 +89,7 @@ require.config({
 //            controllersDirectory: "demo/"
         },
         "lib/com/rpi/requirejs/buildVersion": {
-            version: "0.0.0"
+            version: "0.0.1"
         }
     }
 });

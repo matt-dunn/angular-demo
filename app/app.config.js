@@ -31,15 +31,17 @@ define([
         function ($controllerProvider, $compileProvider, $filterProvider, $provide) {
             $compileProvider.debugInfoEnabled(appConfig.angular.debugInfoEnabled);
 
-            app.register =
-            {
-                controller: $controllerProvider.register,
-                directive: $compileProvider.directive,
-                filter: $filterProvider.register,
-                factory: $provide.factory,
-                service: $provide.service,
-                animation: app.animation
-            };
+            if (!app.register) {
+                app.register =
+                {
+                    controller: $controllerProvider.register,
+                    directive: $compileProvider.directive,
+                    filter: $filterProvider.register,
+                    factory: $provide.factory,
+                    service: $provide.service,
+                    animation: app.animation
+                };
+            }
         }]);
 
     return app;

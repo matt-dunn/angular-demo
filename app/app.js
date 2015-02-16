@@ -20,7 +20,7 @@ define([
     'lib/com/rpi/angular/schema-form/plugins/typeahead/bootstrap-typeahead',
     'lib/com/rpi/angular/schema-form/validators/directives/schemaValidate',
     'lib/angular/markdown',
-    'lib/com/rpi/angular/extensions/extendDeep',
+    'lib/com/rpi/angular/extensions/extendDeep'
 ], function (module, angular, ObjectPath, tv4) {
     "use strict";
 

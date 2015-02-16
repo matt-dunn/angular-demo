@@ -30,18 +30,13 @@ require([
         baseUrl: baseUrl,
 
         paths: {
+//            'angularjsView': "../bower_components/rpi-library/lib/com/rpi/requirejs/testAngularjsView",
             'angular-mocks': '../bower_components/angular-mocks/angular-mocks'
         },
 
         shim: {
             'angular-mocks': ["angular"]
-        },
-
-        // dynamically load all test files
-        deps: allTestFiles,
-
-        // we have to kickoff jasmine, as it is asynchronous
-        callback: window.__karma__.start
+        }
     });
 
     require([
@@ -59,5 +54,9 @@ require([
                 service: app.service,
                 animation: app.animation
             };
+
+            require(allTestFiles, function() {
+                window.__karma__.start();
+            });
         });
 });

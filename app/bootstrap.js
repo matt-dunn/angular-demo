@@ -6,7 +6,7 @@
  *
  */
 
-require([
+define([
     'angular',
     'app',
     'config/app.config',

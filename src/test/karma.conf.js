@@ -24,13 +24,11 @@ module.exports = function (config) {
             {pattern: 'bower_components/underscore/**/*.js', included: false},
             {pattern: 'bower_components/ckeditor/**/*.js', included: false},
             {pattern: 'bower_components/URIjs/**/*.js', included: false},
-            {pattern: 'bower_components/rpi-library/**/*.js', included: false},
+            {pattern: 'bower_components/rpi-library/lib/**/*.js', included: false},
+            {pattern: 'bower_components/rpi-library/lib/**/*.html', included: false},
 
             // Include all application files:
-            {pattern: 'app/**/*.js', included: false},
-
-            // Include all application files:
-            {pattern: 'app/**/*.js', included: false},
+            {pattern: 'app/**/*', included: false}
         ],
 
         // list of files to exclude
@@ -56,8 +54,7 @@ module.exports = function (config) {
             // source files, that you wanna generate coverage for
             // do not include tests or libraries
             // (these files will be instrumented by Istanbul)
-            'app/pages/**/!(*Spec|*.min).js': ['coverage'],
-            'app/components/**/!(*Spec|*.min).js': ['coverage']
+            'app/**/!(*Spec|*.min).js': ['coverage']
         },
 
         coverageReporter: {
