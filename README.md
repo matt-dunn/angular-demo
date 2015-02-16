@@ -4,7 +4,7 @@
 
 ## Demo
 
-[Demo](http://matt-dunn.github.io/angular-demo/app/)
+[Demo](http://matt-dunn.github.io/angular-demo/dist/app/)
 
 # Setup and Build Instructions
 
