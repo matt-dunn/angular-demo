@@ -1,0 +1,18 @@
+<form name="frm" ng-controller="Components.Demo.FormDemoController" ng-submit="onSubmit(frm)">
+    <div ng-cloak ng-hide="isReady" class="highlight">
+        <i class="fa fa-circle-o-notch fa-spin"></i> Initialising&#x2026;
+    </div>
+    <div ng-cloak ng-show="isReady">
+        <div ng-show="frm.$valid"><p>Form is valid</p></div>
+        <div ng-show="frm.$invalid"><p>Form is not valid</p></div>
+        <div ng-show="!frm.$valid && !frm.$invalid"><p><i class="fa fa-circle-o-notch fa-spin"></i> Busy&#x2026;</p></div>
+
+        <button class="btn btn-default btn-sm pull-right" type="button" ng-click="toggleReadOnly()">Toggle Read-only</button>
+
+        <div sf-schema="schema" sf-form="form" sf-model="model" sf-options="options"></div>
+
+        <button ng-hide="schema.readonly" class="btn btn-primary" type="submit" ng-disabled="frm.$invalid || frm.$pending">Save</button>
+
+        <pre>{{model | json}}</pre>
+    </div>
+</form>

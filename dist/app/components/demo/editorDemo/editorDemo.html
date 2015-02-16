@@ -1,0 +1,10 @@
+<form class="editor" name="frmEditor" ng-controller="Components.Demo.EditorDemoController">
+    <div ng-cloak ng-hide="isReady" class="highlight">
+        <i class="fa fa-circle-o-notch fa-spin"></i> Initialising&#x2026;
+    </div>
+    <div ng-cloak ng-show="isReady">
+        <textarea ckeditor="editorOptions" name="editor" ng-model="content" autosave></textarea>
+
+        <pre>{{content}}</pre>
+    </div>
+</form>
