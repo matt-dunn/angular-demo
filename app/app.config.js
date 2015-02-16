@@ -8,7 +8,7 @@
 
 /**!
  *
- * All rights reserved. Copyright (c) Ixxus Ltd 2015
+ * All rights reserved. Copyright (c) RPI Ltd 2015
  *
  * @author Matt Dunn
  *
