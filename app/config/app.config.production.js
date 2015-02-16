@@ -13,7 +13,7 @@ define([
     return {
         // See https://docs.angularjs.org/guide/production
         angular: {
-            debugInfoEnabled: false,
+            debugInfoEnabled: true,
             strictDi: true
         }
     };

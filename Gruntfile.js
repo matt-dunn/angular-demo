@@ -324,7 +324,8 @@ module.exports = function(grunt) {
                             "app/i/**/*",
                             "app/*.min.js",
                             "resources/**/*",
-                            "app/*.md"
+                            "app/*.md",
+                            "app/components/demo/**/*"
                         ],
                         dest: buildOptions.dirs.resources,
                         filter: 'isFile'
