@@ -176,7 +176,8 @@ module.exports = function(grunt) {
                 options: {
                     paths: {
                         requireLib: "../bower_components/requirejs/require",
-                        'config/app.config': 'config/app.config.production'
+                        'config/app.config': 'config/app.config.production',
+                        'config/ckeditor.config': 'config/ckeditor.config.production'
                     }
                 }
             }
@@ -322,7 +323,17 @@ module.exports = function(grunt) {
                             "app/css/**/*",
                             "app/i/**/*",
                             "app/*.min.js",
-                            "resources/**/*"
+                            "resources/**/*",
+                            "app/*.md"
+                        ],
+                        dest: buildOptions.dirs.resources,
+                        filter: 'isFile'
+                    },
+                    {
+                        cwd: "bower_components",
+                        expand: true,
+                        src: [
+                            "ckeditor/**/*"
                         ],
                         dest: buildOptions.dirs.resources,
                         filter: 'isFile'
