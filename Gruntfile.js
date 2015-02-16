@@ -229,8 +229,8 @@ module.exports = function(grunt) {
                 },
                 files: grunt.file.expandMapping([
                     'reports',
-                    'app/css/**/*.css',
-                    'app/css/**/*.map',
+                    'app/**/*.css',
+                    'app/**/*.map',
                     'app/**/*.min.js',
                     'app/**/*.min.html'
                 ])
@@ -275,9 +275,9 @@ module.exports = function(grunt) {
             release: {
                 src: [buildOptions.dirs.build + 'app/components/**/*.{scss,sass}'],
                 options: {
-                    sassDir: 'app/components',
-                    cssDir: 'app/components',
-                    config: 'src/main/sass/config.rb',
+                    sassDir: buildOptions.dirs.build + 'app/components',
+                    cssDir: buildOptions.dirs.build + 'app/components',
+                    config: buildOptions.dirs.build + 'src/main/sass/config.rb',
                     outputStyle: 'compressed',
                     force: true
                 }
@@ -358,6 +358,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-protractor-runner');
     grunt.loadTasks('./bower_components/rpi-library/grunt/grunt-tasks/compass');
+    grunt.loadTasks('./bower_components/rpi-library/grunt/grunt-tasks/recursive-compass');
 
     // Tasks:
     grunt.registerTask('default', ['install']);

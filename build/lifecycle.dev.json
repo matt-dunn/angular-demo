@@ -11,7 +11,8 @@
         ],
         "compile": [
             "requirejs:dev",
-            "compass:dev"
+            "compass:dev",
+            "recursive-compass:dev"
         ],
         "test": [
             "karma:unit"
