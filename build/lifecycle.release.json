@@ -13,7 +13,8 @@
         ],
         "compile": [
             "requirejs:release",
-            "compass:release"
+            "compass:release",
+            "recursive-compass:release"
         ],
         "test": [
             "karma:unit"
