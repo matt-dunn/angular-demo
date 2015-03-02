@@ -3,7 +3,7 @@ define([
     'lib/com/rpi/angular/widgets/directives/widget',
     'lib/com/rpi/angular/widgets/installed/directives/widgets/widgetsDirective',
     'angularjsView!./main.html'
-], function (app) {
+], function(app) {
     "use strict";
 
     app.register.controller('Pages.MainController', [
@@ -15,7 +15,7 @@ define([
             var eventListeners = [];
             $scope.isEditMode = false;
 
-            eventListeners.push($rootScope.$on('WidgetsController.editMode', function (event, data) {
+            eventListeners.push($rootScope.$on('WidgetsController.editMode', function(event, data) {
                 $scope.isEditMode = data.isEditMode;
             }));
 
@@ -27,4 +27,3 @@ define([
         }]
     );
 });
-

@@ -2,7 +2,7 @@ define([
     'app',
     'lib/com/rpi/angular/widgets/services/widgets',
     'angularjsView!./helloWorldDemo.html'
-], function (app) {
+], function(app) {
     "use strict";
 
     app.register.controller('Components.Demo.HelloWorldDemoController', [
@@ -25,4 +25,3 @@ define([
         }]
     );
 });
-

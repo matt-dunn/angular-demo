@@ -1,6 +1,6 @@
 /**!
  *
- * All rights reserved. Copyright (c) RPI Ltd 2015
+ * All rights reserved. Copyright (c) Ixxus Ltd 2015
  *
  * @author Matt Dunn
  *
@@ -18,6 +18,7 @@ require.config({
         'angular-resource': '../bower_components/angular-resource/angular-resource',
         'angular-uuid-service': '../bower_components/angular-uuid-service/uuid-svc',
         'angular-local-storage': '../bower_components/angular-local-storage/dist/angular-local-storage',
+        'ab-base64': '../bower_components/angular-utf8-base64/angular-utf8-base64',
         'underscore': '../bower_components/underscore/underscore',
         'tv4': "../bower_components/tv4/tv4",
         'ObjectPath': "../bower_components/objectpath/lib/ObjectPath",
@@ -32,16 +33,13 @@ require.config({
         // Application paths:
         'services': 'components/services',
         'filters': 'components/filters',
-
-        // Mocks:
-        'components/search/services/searchService': 'components/search/services/searchServiceMock'
     },
     shim: {
 //        jquery: ['jquery'],
         "angular": {
 //            deps: ["jquery"],
             exports: 'angular',
-            init: function () {
+            init: function() {
                 "use strict";
 
                 return window.angular;
@@ -74,11 +72,12 @@ require.config({
         'lib/angular/angular-snap': ['lib/snap/snap', 'angular'],
         'lib/angular/schema-form/schema-form': ['angular', 'angular-sanitize', 'tv4'],
         'lib/angular/schema-form/bootstrap-decorator.min': ['angular', 'angular-sanitize', 'ObjectPath', 'tv4', 'lib/angular/schema-form/schema-form'],
-        'lib/com/rpi/angular/schema-form/decorators/bootstrap/bootstrap-decorator': ['angular', 'angular-sanitize', 'ObjectPath', 'tv4', 'lib/angular/schema-form/schema-form']
+        'lib/com/rpi/angular/schema-form/decorators/bootstrap/bootstrap-decorator': ['angular', 'angular-sanitize', 'ObjectPath', 'tv4', 'lib/angular/schema-form/schema-form'],
+        'ab-base64': ['angular']
     },
     deps: [
         'lib/com/rpi/prototype',
-        'bootstrap',
+        'bootstrap'
     ],
     config: {
         'app': {
@@ -89,8 +88,7 @@ require.config({
 //            controllersDirectory: "demo/"
         },
         "lib/com/rpi/requirejs/buildVersion": {
-            version: "0.0.11"
+            version: "0.0.19"
         }
     }
 });
-

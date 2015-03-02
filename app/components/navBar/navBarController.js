@@ -2,7 +2,7 @@ define([
     'app',
     'lib/com/rpi/angular/navbar/directives/navbar',
     'angularjsView!./navBar.html'
-], function (app) {
+], function(app) {
     "use strict";
 
     app.register.controller('Components.NavBarController', [
@@ -17,7 +17,7 @@ define([
                 $rootScope.$emit('WidgetsController.editMode', {isEditMode: $scope.isEditMode});
             };
 
-            eventListeners.push($rootScope.$on('WidgetsController.editMode', function (event, data) {
+            eventListeners.push($rootScope.$on('WidgetsController.editMode', function(event, data) {
                 $scope.isEditMode = data.isEditMode;
             }));
 
@@ -29,4 +29,3 @@ define([
         }]
     );
 });
-

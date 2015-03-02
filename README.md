@@ -70,7 +70,11 @@ grunt --target=release
 #### Build output
 
 * {Gruntfile.js buildOptions.dirs.resourcesTarget}
-* reports (e.g. unit test results)
+* Unit test reports
+    * ```reports/test/unit-test-results.xml``` - junit unit test results
+* Code coverage
+    * ```reports/test/coverage``` - (istanbu)[http://istanbul-js.org/] is used to collect code coverage information and is configured in (karma-config.js)[src/test/karma-config.js].
+
 
 ## Maven Integration
 

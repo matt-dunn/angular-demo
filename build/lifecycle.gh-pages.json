@@ -13,7 +13,7 @@
             "copy:release"
         ],
         "compile": [
-            "requirejs:release",
+            "requirejs:gh-pages",
             "compass:release",
             "recursive-compass:release"
         ],

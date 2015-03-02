@@ -1,10 +1,10 @@
 define([
     'app',
     'angularjsView!./progressBarDemo.html'
-], function (app) {
+], function(app) {
     "use strict";
 
-    app.register.controller('Components.Demo.ProgressBarDemoController', ['$scope', function ($scope) {
+    app.register.controller('Components.Demo.ProgressBarDemoController', ['$scope', function($scope) {
         console.log("SETUP Components.Demo.ProgressBarDemoController");
         $scope.max = 200;
 
@@ -44,4 +44,3 @@ define([
         $scope.randomStacked();
     }]);
 });
-

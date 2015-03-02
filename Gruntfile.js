@@ -49,8 +49,33 @@ module.exports = function(grunt) {
                 },
                 src: [
                     'src/test/test-main.js',
-                    'src/test/**/*Spec.js',
-                    'src/test/**/*Scenario.js']
+                    'app/**/*Spec.js',
+                    'app/**/*Scenario.js']
+            }
+        },
+
+        jscs: {
+            libSrc: {
+                options: {
+                    config: ".jscsrc"
+                },
+                files: {
+                    src: [
+                        'app/**/*.js',
+                        '!app/**/*.min.js',
+                        '!**/*Spec.js']
+                }
+            },
+            testSrc: {
+                options: {
+                    config: ".jscsrc"
+                },
+                files: {
+                    src: [
+                        'src/test/test-main.js',
+                        'app/**/*Spec.js',
+                        'app/**/*Scenario.js']
+                }
             }
         },
 
@@ -61,7 +86,7 @@ module.exports = function(grunt) {
                 }
             },
             dev: {
-                src: ['package.json', 'bower.json', buildOptions.dirs.build + 'app/main.js']
+                src: ['package.json', 'bower.json', 'app/main.js']
             },
             devHtml: {
                 options: {
@@ -79,7 +104,7 @@ module.exports = function(grunt) {
                 options: {
                     release: "patch"
                 },
-                src: ['package.json', 'bower.json', buildOptions.dirs.build + 'app/main.js']
+                src: ['package.json', 'bower.json', 'app/main.js']
             },
             releaseHtml: {
                 options: {
@@ -148,6 +173,7 @@ module.exports = function(grunt) {
 
                     'lib/com/rpi/angular/widgets/installed/installedController',
                     'lib/com/rpi/angular/widgets/available/availableController',
+                    'lib/com/rpi/angular/widgets/settings/settingsController',
 
                     'components/demo/editorDemo/editorDemoController'
                 ],
@@ -178,6 +204,15 @@ module.exports = function(grunt) {
                         requireLib: "../bower_components/requirejs/require",
                         'config/app.config': 'config/app.config.production',
                         'config/ckeditor.config': 'config/ckeditor.config.production'
+                    }
+                }
+            },
+            'gh-pages': {
+                options: {
+                    paths: {
+                        requireLib: "../bower_components/requirejs/require",
+                        'config/app.config': 'config/app.config.production',
+                        'config/ckeditor.config': 'config/ckeditor.config.gh-pages'
                     }
                 }
             }
@@ -229,8 +264,8 @@ module.exports = function(grunt) {
                 },
                 files: grunt.file.expandMapping([
                     'reports',
-                    'app/**/*.css',
-                    'app/**/*.map',
+                    'app/css/**/*.css',
+                    'app/css/**/*.map',
                     'app/**/*.min.js',
                     'app/**/*.min.html'
                 ])
@@ -288,10 +323,30 @@ module.exports = function(grunt) {
             options: {
             },
             release: {
+                options: {
+                    strip: true,
+                    templateSettings: {
+                        interpolate: /{{([\s\S]+?)}}/g
+                    }
+                },
                 files: [
                     {
-                        src: buildOptions.dirs.build + 'app/index.html',
+                        src: 'app/index.html',
                         dest: buildOptions.dirs.build + 'app/index.html'
+                    }
+                ]
+            },
+            alfrescoshare: {
+                options: {
+                    strip: true,
+                    templateSettings: {
+                        interpolate: /{{([\s\S]+?)}}/g
+                    }
+                },
+                files: [
+                    {
+                        src: 'app/index.html',
+                        dest: buildOptions.dirs.resourcesBase + "alfresco/web-extension/templates/com/ixxus/ascend/ml-search.ftl"
                     }
                 ]
             }
@@ -338,6 +393,15 @@ module.exports = function(grunt) {
                         ],
                         dest: buildOptions.dirs.resources,
                         filter: 'isFile'
+                    },
+                    {
+                        cwd: "build/resources",
+                        expand: true,
+                        src: [
+                            "**/*"
+                        ],
+                        dest: buildOptions.dirs.resourcesBase,
+                        filter: 'isFile'
                     }
                 ]
             }
@@ -346,6 +410,7 @@ module.exports = function(grunt) {
 
     require("./bower_components/rpi-library/grunt/grunt-templates/getVersion");
 
+    grunt.loadNpmTasks("grunt-jscs");
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-processhtml');
     grunt.loadNpmTasks('grunt-version');

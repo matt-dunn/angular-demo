@@ -19,9 +19,11 @@ module.exports = function (config) {
             // Include application dependencies:
             {pattern: 'bower_components/angular**/**/*.js', included: false},
             {pattern: 'bower_components/require**/**/*.js', included: false},
+            {pattern: 'bower_components/jquery/dist/jquery.js', included: false},
             {pattern: 'bower_components/tv4/**/*.js', included: false},
             {pattern: 'bower_components/objectpath/**/*.js', included: false},
             {pattern: 'bower_components/underscore/**/*.js', included: false},
+            {pattern: 'bower_components/moment/moment.js', included: false},
             {pattern: 'bower_components/ckeditor/**/*.js', included: false},
             {pattern: 'bower_components/URIjs/**/*.js', included: false},
             {pattern: 'bower_components/rpi-library/lib/**/*.js', included: false},
@@ -33,6 +35,7 @@ module.exports = function (config) {
 
         // list of files to exclude
         exclude: [
+            'app/**/*.min.*'
         ],
 
         plugins: [
@@ -54,12 +57,21 @@ module.exports = function (config) {
             // source files, that you wanna generate coverage for
             // do not include tests or libraries
             // (these files will be instrumented by Istanbul)
-            'app/**/!(*Spec|*.min).js': ['coverage']
+            'app/**/!(*Mock|*Spec|*.min).js': ['coverage']
         },
 
         coverageReporter: {
-            type: 'lcov', // lcov format supported by Coveralls
-            dir: 'reports/test/coverage'
+            dir: 'reports/test/coverage',
+            reporters: [
+                // reporters not supporting the `file` property
+                { type: 'html', subdir: 'report-html' },
+//                { type: 'lcov', subdir: 'report-lcov' },
+                { type: 'cobertura', subdir: '.', file: 'cobertura.xml' },              // Jenkins
+//                { type: 'lcovonly', subdir: '.', file: 'report-lcovonly.txt' },
+//                { type: 'teamcity', subdir: '.', file: 'teamcity.txt' },
+//                { type: 'text', subdir: '.', file: 'text.txt' },
+//                { type: 'text-summary', subdir: '.', file: 'text-summary.txt' },
+            ]
         },
 
         junitReporter: {
