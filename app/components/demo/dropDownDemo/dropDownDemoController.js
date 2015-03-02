@@ -1,10 +1,10 @@
 define([
     'app',
     'angularjsView!./dropDownDemo.html'
-], function (app) {
+], function(app) {
     "use strict";
 
-    app.register.controller('Components.Demo.DropDownDemoController', ['$scope', function ($scope) {
+    app.register.controller('Components.Demo.DropDownDemoController', ['$scope', function($scope) {
         console.log("SETUP Components.Demo.DropDownDemoController");
         $scope.items = [
             'The first choice!',
@@ -27,4 +27,3 @@ define([
         };
     }]);
 });
-

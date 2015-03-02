@@ -9,6 +9,7 @@
         "initialize": [
             "clean:release",
             "jshint",
+            "jscs",
             "copy:release"
         ],
         "compile": [

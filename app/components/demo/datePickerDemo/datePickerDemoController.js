@@ -1,23 +1,23 @@
 define([
     'app',
     'angularjsView!./datePickerDemo.html'
-], function (app) {
+], function(app) {
     "use strict";
 
-    app.register.controller('Components.Demo.DatePickerDemoController', ['$scope', function ($scope) {
+    app.register.controller('Components.Demo.DatePickerDemoController', ['$scope', function($scope) {
         console.log("SETUP Components.Demo.DatePickerDemoController");
         $scope.today = function() {
             $scope.dt = new Date();
         };
         $scope.today();
 
-        $scope.clear = function () {
+        $scope.clear = function() {
             $scope.dt = null;
         };
 
         // Disable weekend selection
         $scope.disabled = function(date, mode) {
-            return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+            return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 6));
         };
 
         $scope.toggleMin = function() {
@@ -41,4 +41,3 @@ define([
         $scope.format = $scope.formats[0];
     }]);
 });
-

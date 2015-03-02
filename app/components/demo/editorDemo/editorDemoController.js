@@ -3,7 +3,7 @@ define([
     './services/data',
     'lib/com/rpi/angular/autosave/directives/autosave',
     'angularjsView!./editorDemo.html'
-], function (app) {
+], function(app) {
     "use strict";
 
     app.register.controller('Components.Demo.EditorDemoController', [
@@ -38,4 +38,3 @@ define([
         }]
     );
 });
-

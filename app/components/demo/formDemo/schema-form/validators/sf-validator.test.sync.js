@@ -1,9 +1,9 @@
 define([
     'app'
-], function (app) {
+], function(app) {
     "use strict";
 
-    app.register.factory("sf-validator.test.sync", [function () {
+    app.register.factory("sf-validator.test.sync", [function() {
         return {
             async: false,
             validate: function(modelValue) {

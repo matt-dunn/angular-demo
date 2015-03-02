@@ -9,12 +9,12 @@
 define([
     'app',
     'lib/com/rpi/angular/ckeditor/providers/config'
-], function (app) {
+], function(app) {
     "use strict";
 
     app.config([
         'Lib.Com.Rpi.Angular.CKEditor.ConfigProvider',
-        function (ckeditorConfigProvider) {
+        function(ckeditorConfigProvider) {
             ckeditorConfigProvider.config({
                 basePath: "/bower_components/ckeditor/",
                 contentsCss: "css/ckeditor/contents.css"

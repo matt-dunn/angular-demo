@@ -13,12 +13,12 @@ define([
     'lib/showdown/extensions/prettify',
     'lib/showdown/extensions/hash',
     'lib/showdown/extensions/gherkin'
-], function (app) {
+], function(app) {
     "use strict";
 
     app.config([
         'markdownConverterProvider',
-        function (markdownConverterProvider) {
+        function(markdownConverterProvider) {
             markdownConverterProvider.config({
                 extensions: ['github', 'table', 'prettify', 'hash', 'gherkin']
             });

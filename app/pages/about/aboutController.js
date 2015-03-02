@@ -2,7 +2,7 @@ define([
     'app',
     'lib/com/rpi/angular/widgets/directives/widget',
     'angularjsView!./about.html'
-], function (app) {
+], function(app) {
     "use strict";
 
     app.register.controller('Pages.AboutController', [
@@ -11,4 +11,3 @@ define([
         }]
     );
 });
-

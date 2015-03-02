@@ -6,7 +6,7 @@ define([
     'angularjsView!./formDemo.html',
     './schema-form/validators/sf-validator.test.sync',
     './schema-form/validators/sf-validator.test.async'
-], function (app, angular) {
+], function(app, angular) {
     "use strict";
 
     app.register.controller('Components.Demo.FormDemoController', [
@@ -49,4 +49,3 @@ define([
         }]
     );
 });
-

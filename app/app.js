@@ -21,7 +21,7 @@ define([
     'lib/com/rpi/angular/schema-form/validators/directives/schemaValidate',
     'lib/angular/markdown',
     'lib/com/rpi/angular/extensions/extendDeep'
-], function (module, angular, ObjectPath, tv4) {
+], function(module, angular, ObjectPath, tv4) {
     "use strict";
 
     // @TOTO: tv4 registers as an AMD module but schemaForm does not access via AMD... remove global...??

@@ -1,16 +1,16 @@
 define([
     'app',
     'angularjsView!./paginationDemo.html'
-], function (app) {
+], function(app) {
     "use strict";
 
-    app.register.controller('Components.Demo.PaginationDemoController', ['$scope', '$log', function ($scope, $log) {
+    app.register.controller('Components.Demo.PaginationDemoController', ['$scope', '$log', function($scope, $log) {
         console.log("SETUP Components.Demo.PaginationDemoController");
 
         $scope.totalItems = 64;
         $scope.currentPage = 4;
 
-        $scope.setPage = function (pageNo) {
+        $scope.setPage = function(pageNo) {
             $scope.currentPage = pageNo;
         };
 
@@ -23,4 +23,3 @@ define([
         $scope.bigCurrentPage = 1;
     }]);
 });
-

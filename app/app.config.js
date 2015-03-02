@@ -20,7 +20,7 @@ define([
     'config/app.config',
     'config/markdown.config',
     'config/ckeditor.config'
-], function (app, appConfig) {
+], function(app, appConfig) {
     "use strict";
 
     app.config([
@@ -28,7 +28,7 @@ define([
         '$compileProvider',
         '$filterProvider',
         '$provide',
-        function ($controllerProvider, $compileProvider, $filterProvider, $provide) {
+        function($controllerProvider, $compileProvider, $filterProvider, $provide) {
             $compileProvider.debugInfoEnabled(appConfig.angular.debugInfoEnabled);
 
             if (!app.register) {
@@ -46,4 +46,3 @@ define([
 
     return app;
 });
-

@@ -1,10 +1,10 @@
 define([
     'app',
     'angularjsView!./buttonsDemo.html'
-], function (app) {
+], function(app) {
     "use strict";
 
-    app.register.controller('Components.Demo.ButtonsDemoController', ['$scope', function ($scope) {
+    app.register.controller('Components.Demo.ButtonsDemoController', ['$scope', function($scope) {
         console.log("SETUP Components.Demo.ButtonsDemoController");
         $scope.singleModel = 1;
 
@@ -17,4 +17,3 @@ define([
         };
     }]);
 });
-

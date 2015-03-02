@@ -4,7 +4,7 @@ define([
     'lib/com/rpi/angular/widgets/services/widgets',
     'lib/com/rpi/angular/providers/angular-css-injector',
     'angularjsView!./accordionDemo.html'
-], function (module, app) {
+], function(module, app) {
     "use strict";
 
     app.register.controller('Components.Demo.AccordionDemoController', [
@@ -62,4 +62,3 @@ define([
         }]
     );
 });
-

@@ -7,7 +7,7 @@
  */
 
 define([
-], function () {
+], function() {
     "use strict";
 
     return {

@@ -1,10 +1,10 @@
 define([
     'app',
     'angularjsView!./carouselDemo.html'
-], function (app) {
+], function(app) {
     "use strict";
 
-    app.register.controller('Components.Demo.CarouselDemoController', ['$scope', function ($scope) {
+    app.register.controller('Components.Demo.CarouselDemoController', ['$scope', function($scope) {
         console.log("SETUP Components.Demo.CarouselDemoController");
         $scope.myInterval = 5000;
         var slides = $scope.slides = [];
@@ -12,13 +12,12 @@ define([
             var newWidth = 600 + slides.length + 1;
             slides.push({
                 image: 'http://placekitten.com/' + newWidth + '/300',
-                text: ['More','Extra','Lots of','Surplus'][slides.length % 4] + ' ' +
+                text: ['More', 'Extra', 'Lots of', 'Surplus'][slides.length % 4] + ' ' +
                     ['Cats', 'Kittys', 'Felines', 'Cutes'][slides.length % 4]
             });
         };
-        for (var i=0; i<4; i++) {
+        for (var i = 0; i < 4; i++) {
             $scope.addSlide();
         }
     }]);
 });
-

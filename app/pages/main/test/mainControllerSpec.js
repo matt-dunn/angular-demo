@@ -9,7 +9,7 @@
 define([
     'app',
     '../mainController'
-], function (app) {
+], function(app) {
     "use strict";
 
     beforeEach(module(app.name));
@@ -43,4 +43,3 @@ define([
         });
     });
 });
-
