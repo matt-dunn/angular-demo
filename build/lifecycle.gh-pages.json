@@ -21,9 +21,9 @@
             "karma:unit"
         ],
         "prepare-package": [
-            "version:release",
-            "version:releaseHtml",
-            "version:releaseHtmlMeta",
+            "version:gh-pages",
+            "version:gh-pagesHtml",
+            "version:gh-pagesHtmlMeta",
             "processhtml:release",
             "copy:resources"
         ],

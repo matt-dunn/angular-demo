@@ -100,6 +100,21 @@ module.exports = function(grunt) {
                 },
                 src: [buildOptions.dirs.build + 'app/index*.html']
             },
+            'gh-pages': {
+                src: ['package.json', 'bower.json', 'app/main.js']
+            },
+            'gh-pagesHtml': {
+                options: {
+                    prefix: '\\?version=*'
+                },
+                src: [buildOptions.dirs.build + 'app/index*.html']
+            },
+            'gh-pagesHtmlMeta': {
+                options: {
+                    prefix: '<meta\\s*name="version"\\s*content="*'
+                },
+                src: [buildOptions.dirs.build + 'app/index*.html']
+            },
             release: {
                 options: {
                     release: "patch"
