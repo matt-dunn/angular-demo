@@ -1,9 +1,9 @@
 define([
     'app'
-], function (app) {
+], function(app) {
     "use strict";
 
-    app.register.factory("sf-validator.test.async", ['$q', '$timeout', function ($q, $timeout) {
+    app.register.factory("sf-validator.test.async", ['$q', '$timeout', function($q, $timeout) {
         var timeout = null;
 
         return {
@@ -33,6 +33,3 @@ define([
         };
     }]);
 });
-
-
-

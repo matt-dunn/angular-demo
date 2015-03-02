@@ -8,7 +8,7 @@
 
 define([
     'app'
-], function (
+], function(
     app
     ) {
     "use strict";
@@ -18,7 +18,7 @@ define([
             var dataService = {
                 load: function(id) {
                     console.log("Loading data for '" + id + "'");
-                    
+
                     var defer = $q.defer();
 
                     $timeout(function() {
@@ -50,10 +50,10 @@ define([
                                         "items": {
                                             "type": "object",
                                             "properties": {
-                                                "inputTest": { "type": "string", "minLength": 4, "title": "Input Test" },
-                                                "richTextTest1": { "type": "string", "minLength": 2, "title": "Rich Text Test 1", "description": "Rich text description" },
-                                                "richTextTest2": { "type": "string", "minLength": 2, "title": "Rich Text Test 2" },
-                                                "checkboxTest": { "type": "boolean", "title": "Checkbox test" },
+                                                "inputTest": {"type": "string", "minLength": 4, "title": "Input Test"},
+                                                "richTextTest1": {"type": "string", "minLength": 2, "title": "Rich Text Test 1", "description": "Rich text description"},
+                                                "richTextTest2": {"type": "string", "minLength": 2, "title": "Rich Text Test 2"},
+                                                "checkboxTest": {"type": "boolean", "title": "Checkbox test"},
                                                 "selectTest": {
                                                     "title": "Select Test",
                                                     "type": "string",
@@ -67,7 +67,7 @@ define([
                                                     "type": "object",
                                                     "title": "Typeahead Async Test", "format":"typeahead"
                                                 },
-                                                "textAreaTest": { "type": "string", "minLength": 2, "title": "Textarea Test" }
+                                                "textAreaTest": {"type": "string", "minLength": 2, "title": "Textarea Test"}
                                             }
                                         }
                                     }
@@ -93,16 +93,16 @@ define([
                                                 "key": "tests[]typeaheadTest",
                                                 "type": "typeahead",
                                                 "titleMap": [
-                                                    { value: "item1", name: "Item 1" },
-                                                    { value: "item2", name: "Item 2" },
-                                                    { value: "item3", name: "Item 3" },
-                                                    { value: "item4", name: "Item 4" },
-                                                    { value: "item5", name: "Item 5" },
-                                                    { value: "item6", name: "Item 6" },
-                                                    { value: "item7", name: "Item 7" },
-                                                    { value: "item8", name: "Item 8" },
-                                                    { value: "item9", name: "Item 9" },
-                                                    { value: "item10", name: "Item 10" }
+                                                    {value: "item1", name: "Item 1"},
+                                                    {value: "item2", name: "Item 2"},
+                                                    {value: "item3", name: "Item 3"},
+                                                    {value: "item4", name: "Item 4"},
+                                                    {value: "item5", name: "Item 5"},
+                                                    {value: "item6", name: "Item 6"},
+                                                    {value: "item7", name: "Item 7"},
+                                                    {value: "item8", name: "Item 8"},
+                                                    {value: "item9", name: "Item 9"},
+                                                    {value: "item10", name: "Item 10"}
                                                 ],
                                                 "readonly": false,
                                                 "typeahead": {
@@ -148,11 +148,11 @@ define([
                                                     "toolbar": [
                                                         {
                                                             "name": "basicstyles",
-                                                            "items": [ "Bold", "Italic", "Strike", "Underline" ]
+                                                            "items": ["Bold", "Italic", "Strike", "Underline"]
                                                         },
                                                         {
                                                             "name": "extra",
-                                                            "items": [ "Subscript", "Superscript" ]
+                                                            "items": ["Subscript", "Superscript"]
                                                         }
                                                     ]
                                                 },
@@ -168,7 +168,7 @@ define([
                                                     "toolbar": [
                                                         {
                                                             "name": "basicstyles",
-                                                            "items": [ "Bold", "Italic", "Strike", "Underline" ]
+                                                            "items": ["Bold", "Italic", "Strike", "Underline"]
                                                         }
                                                     ]
                                                 },
