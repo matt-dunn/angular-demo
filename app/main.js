@@ -1,6 +1,6 @@
 /**!
  *
- * All rights reserved. Copyright (c) Ixxus Ltd 2015
+ * All rights reserved. Copyright (c) RPI Ltd 2015
  *
  * @author Matt Dunn
  *
@@ -32,10 +32,9 @@ require.config({
 
         // Application paths:
         'services': 'components/services',
-        'filters': 'components/filters',
+        'filters': 'components/filters'
     },
     shim: {
-//        jquery: ['jquery'],
         "angular": {
 //            deps: ["jquery"],
             exports: 'angular',

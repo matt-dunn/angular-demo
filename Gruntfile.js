@@ -350,20 +350,6 @@ module.exports = function(grunt) {
                         dest: buildOptions.dirs.build + 'app/index.html'
                     }
                 ]
-            },
-            alfrescoshare: {
-                options: {
-                    strip: true,
-                    templateSettings: {
-                        interpolate: /{{([\s\S]+?)}}/g
-                    }
-                },
-                files: [
-                    {
-                        src: 'app/index.html',
-                        dest: buildOptions.dirs.resourcesBase + "alfresco/web-extension/templates/com/ixxus/ascend/ml-search.ftl"
-                    }
-                ]
             }
         },
 
