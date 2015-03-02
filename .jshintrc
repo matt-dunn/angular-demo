@@ -23,6 +23,8 @@
         "expect",
         "element",
         "afterEach",
-        "beforeEach"
+        "beforeEach",
+        "inject",
+        "module"
     ]
 }

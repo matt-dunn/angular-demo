@@ -1,5 +1,5 @@
 {
-    "version": "0.0.12",
+    "version": "0.0.19",
     "private": true,
     "name": "angular-demo",
     "description": "AngularJS Demo",
@@ -19,6 +19,7 @@
         "grunt-version": "^0.3.1",
         "grunt-processhtml": "0.3.x",
         "grunt-contrib-copy": "0.7.x",
+        "grunt-jscs": "1.5.x",
 
         "xml2js": "0.4.x",
         "dargs": "^2.0.3",
@@ -42,7 +43,7 @@
         "karma-ng-html2js-preprocessor": "~0.1.0",
         "karma-junit-reporter": "~0.2.1",
         "karma-teamcity-reporter": "~0.1.2",
-        "karma-coverage": "~0.1.4",
+        "karma-coverage": "~0.2.7",
         "coveralls": "~2.8.0",
 
         "protractor": "~1.0.0",

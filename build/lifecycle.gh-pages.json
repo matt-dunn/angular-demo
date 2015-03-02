@@ -1,0 +1,36 @@
+{
+    "dirs": {
+        "build": "target/build/",
+        "resourcesBase": "dist/",
+        "resourcesTarget": ""
+    },
+
+    "phases": {
+        "initialize": [
+            "clean:release",
+            "jshint",
+            "copy:release"
+        ],
+        "compile": [
+            "requirejs:gh-pages",
+            "compass:release",
+            "recursive-compass:release"
+        ],
+        "test": [
+            "karma:unit"
+        ],
+        "prepare-package": [
+            "version:release",
+            "version:releaseHtml",
+            "version:releaseHtmlMeta",
+            "processhtml:release",
+            "copy:resources"
+        ],
+        "integration-test": [
+            "protractor:release"
+        ],
+        "verify": [],
+        "install": [],
+        "deploy": []
+    }
+}
