@@ -1,8 +1,9 @@
 define([
     'app',
+    'lib/com/rpi/requirejs/buildVersion!',
     'lib/com/rpi/angular/navbar/directives/navbar',
     'angularjsView!./navBar.html'
-], function(app) {
+], function(app, build) {
     "use strict";
 
     app.register.controller('Components.NavBarController', [
@@ -11,7 +12,7 @@ define([
         function($scope, $rootScope) {
             var eventListeners = [];
             $scope.isEditMode = false;
-
+            $scope.build = build;
             $scope.setEditMode = function() {
                 $scope.isEditMode = !$scope.isEditMode;
                 $rootScope.$emit('WidgetsController.editMode', {isEditMode: $scope.isEditMode});
