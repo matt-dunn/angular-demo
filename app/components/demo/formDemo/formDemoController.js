@@ -42,6 +42,7 @@ define([
             $scope.onSubmit = function(form) {
                 if (form.$valid) {
                     console.log("VALID", $scope.model);
+                    DataService.save("Components.Demo.FormDemoController");
                 } else {
                     console.log("ERRORS", form);
                 }
